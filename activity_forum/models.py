@@ -55,11 +55,15 @@ class UserProfile(models.Model):
             target = User.objects.get(user_id=user_id)
         except DoNotExist:
             return None
-        target.username = new_name
-        target.password = new_password
-        target.email = new_email
         targetProfile = UserProfile.objects.get(user_id=user_id)
-        targetProfile.real_name = new_real_name
+        if new_name!=None:
+            target.username = new_name
+        if new_password!=None:
+            target.password = new_password
+        if new_email!=None:
+            target.email = new_email
+        if new_real_name!=None:
+            targetProfile.real_name = new_real_name
         target.save()
         targetProfile.save()
 
@@ -142,18 +146,30 @@ class Activity(models.Model):
             activity = Activity.objects.get(id=activity_id)
         except DoNotExist:
             return None
-        activity.user_id = user_id
-        activity.place = place
-        activity.start_time = start_time
-        activity.end_time = end_time
-        activity.state = state
-        activity.capacity = capacity
-        activity.type = type
-        activity.name = name
-        activity.description = description
-        activity.priority = priority
-        activity.want_to_join_count = want_to_join_count
-        activity.created_at = created_at
+        if user_id!=None:
+            activity.user_id = user_id
+        if place!=None:
+            activity.place = place
+        if start_time!=None:
+            activity.start_time = start_time
+        if end_time!=None:
+            activity.end_time = end_time
+        if state!=None:
+            activity.state = state
+        if capacity!=None:
+            activity.capacity = capacity
+        if type!=None:
+            activity.type = type
+        if name!=None:
+            activity.name = name
+        if description!=None:
+            activity.description = description
+        if priority!=None:
+            activity.priority = priority
+        if want_to_join_count!=None:
+            activity.want_to_join_count = want_to_join_count
+        if created_at!=None:
+            activity.created_at = created_at
         activity.save()
 
 class Join(models.Model):
