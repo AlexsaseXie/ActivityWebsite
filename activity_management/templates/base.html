@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> 一个论坛</title>
+    {% load static %}
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+<nav>
+    <ul class="nav nav-pills pull-right">
+        {% if user.is_authenticated %}
+            <li role="presentation">
+                <a href="{% url 'change_info' %}">修改个人信息</a>
+            </li>
+            <li role="presentation">
+                <a href="{% url 'authenticate' %}">用户认证</a>
+            </li>
+            <li role="presentation">
+                <a href="{% url 'log_out' %}">登出(<b>{{user.username}}</b>)</a>
+            </li>
+        {% else %}
+            <li role="presentation">
+                <a href="{% url 'log_in' %}">登录</a>
+            </li>
+            <li role="presentation">
+                <a href="{% url 'sign_up' %}">注册</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+<body>
+    <div class="container">
+        <div class="header clearfix">
+        </div>
+        <div class="header clearfix"><h3 class="text-muted"> 一个论坛</h3></div>
+        <section id="content">
+            {% block content %}{% endblock %}
+        </section>
+        <footer class="footer">
+            <p>&copy; 2017 一个论坛</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
+from django.db import connection
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -13,12 +14,23 @@ class UserProfile(models.Model):
     joined_activity_count = models.IntegerField()
     real_name = models.CharField(max_length = 100,default = '')
 
-    # 创建新用户
-    def create_userprofile(uname, password, real_name, email, privilege, applied_activity_count=0,
+    def __str__(self):
+        return '%s (%s)' % (self.user.username, self.real_name)
+
+    #检查是否有此用户名
+    def check_username_exist(self,username):
+        ulist = User.objects.filter(username = username)
+        if not ulist:
+            return False
+        else:
+            return True
+
+    #创建新用户
+    def create_userprofile(self,uname, password, real_name, email, privilege, applied_activity_count=0,
                            admitted_activity_count=0, joined_activity_count=0):
         user = User()
         user.username = uname
-        user.set_password = password
+        user.set_password(password)
         user.email = email
         user.save()
         userProfile = UserProfile()
@@ -29,66 +41,86 @@ class UserProfile(models.Model):
         userProfile.joined_activity_count = joined_activity_count
         userProfile.real_name = real_name
         userProfile.save()
+        return [user,userProfile]
 
     # 删除用户
-    def remove_userprofile(user_id):
+    def remove_userprofile(self,user_id):
         try:
             target = User.objects.get(user_id=user_id)
-        except DoNotExist:
+        except User.DoesNotExist:
             return None
         target.delete()
         # targetProfile = UserProfile.objects.get(user_id = user_id)
         # targetProfile.delete()
 
     # 找到用户的记录
-    def find_user_by_id(user_id):
+    def find_user_by_id(self,user_id):
         try:
-            target = User.objects.get(user_id=user_id)
-        except DoNotExist:
+            target = User.objects.get(id=user_id)
+        except User.DoesNotExist:
             return None
         targetProfile = UserProfile.objects.get(user_id=user_id)
         return [target, targetProfile]
 
     # 更新用户信息
-    def update_user_info(user_id, new_name, new_password, new_real_name, new_email):
+    def update_user_info(self,user_id, new_name, new_password, new_real_name, new_email):
         try:
-            target = User.objects.get(user_id=user_id)
-        except DoNotExist:
+            target = User.objects.get(id = user_id)
+        except User.DoesNotExist:
             return None
         targetProfile = UserProfile.objects.get(user_id=user_id)
         if new_name!=None:
             target.username = new_name
         if new_password!=None:
-            target.password = new_password
+            target.set_password(new_password)
         if new_email!=None:
             target.email = new_email
         if new_real_name!=None:
             targetProfile.real_name = new_real_name
         target.save()
         targetProfile.save()
+        return [target,targetProfile]
 
     # 改变用户的权限
-    def change_user_privilege(user_id, new_privilege):
+    def change_user_privilege(self,user_id, new_privilege):
         try:
             targetProfile = UserProfile.objects.get(user_id=user_id)
-        except DoNotExist:
+        except UserProfile.DoesNotExist:
             return None
         targetProfile.privilege = new_privilege
+        targetProfile.save()
+        return targetProfile
 
-    # 返回某用户创建的活动列表
-    def find_user_created_activities(user_id, state):
+    #判断是否参与了某个活动
+    def check_user_join_activity(self,user_id,activity_id):
+        result = Join.objects.filter(user_id = user_id,activity_id = activity_id)
+        if not result:
+            return False
+        else:
+            return True
+
+    # 返回某用户创建的活动列表（活动列表）
+    def find_user_created_activities(self,user_id, state):
         activities = Activity.objects.filter(user_id=user_id, state=state)
         return activities
 
     # 返回某用户参加的活动列表（参与记录）
-    def find_user_joined_activities(user_id, state=0):
+    def find_user_joined_activities(self,user_id, state=0):
         activities = Join.objects.filter(user_id=user_id, state=state)
         return activities
 
     # 返回某用户的所有消息
-    def find_user_msgs(user_id, state):
-        msgs = Msg.objects.filter(receive_user_id=user_id, state=state)
+    def find_user_msgs(self,user_id, state):
+        msgs = Msg.objects.filter(receive_user_id=user_id, state=state).order_by('created_at')
         return msgs
+
+    #返回某用户未读消息个数
+    def count_user_unread_msgs(self,user_id,state = 0):
+        msgs = Msg.objects.filter(receive_user_id=user_id, state=state)
+        count = 0
+        for m in msgs:
+            count += 1
+        return count
 
 class Activity(models.Model):
     id = models.AutoField(primary_key = True)
@@ -106,7 +138,7 @@ class Activity(models.Model):
     created_at = models.DateTimeField(default = timezone.now)
 
     # 创建活动
-    def create_activity(user_id, place, start_time, end_time, capacity, type, name, description, priority, created_at,
+    def create_activity(self,user_id, place, start_time, end_time, capacity, type, name, description, priority, created_at,
                         want_to_join_count=0, state=0):
         activity = Activity()
         activity.user_id = user_id
@@ -122,29 +154,30 @@ class Activity(models.Model):
         activity.want_to_join_count = want_to_join_count
         activity.created_at = created_at
         activity.save()
+        return activity
 
     # 删除活动
-    def remove_activity(activity_id):
+    def remove_activity(self,activity_id):
         try:
             target = Activity.objects.get(id=activity_id)
-        except DoNotExist:
+        except Activity.DoesNotExist:
             return None
         target.delete()
 
     # 找到活动的信息
-    def find_activity(activity_id):
+    def find_activity(self,activity_id):
         try:
             target = Activity.objects.get(id=activity_id)
-        except DoNotExist:
+        except Activity.DoesNotExist:
             return None
         return target
 
     # 更新活动信息
-    def update_activity(activity_id, user_id, place, start_time, end_time, capacity, type, name, description, priority,
+    def update_activity(self,activity_id, user_id, place, start_time, end_time, capacity, type, name, description, priority,
                         created_at, want_to_join_count, state):
         try:
             activity = Activity.objects.get(id=activity_id)
-        except DoNotExist:
+        except Activity.DoesNotExist:
             return None
         if user_id!=None:
             activity.user_id = user_id
@@ -171,6 +204,25 @@ class Activity(models.Model):
         if created_at!=None:
             activity.created_at = created_at
         activity.save()
+        return activity
+
+    #更改活动的状态
+    def update_activity_state(self,activity_id,newstate):
+        try:
+            activity = Activity.objects.get(id=activity_id)
+        except Activity.DoesNotExist:
+            return None
+        activity.state = newstate
+        activity.save()
+        return activity
+
+    #返回活动的时长
+    def activity_length(self,activity_id):
+        cursor = connection.cursor()
+        query = 'SELECT DATEDIFF(Minute,start_time,end_time) AS time_length FROM Activity WHERE activity_id = %d LIMIT 1' %activity_id
+        activities = cursor.execute(query)
+        cursor.close()
+        return activities[0].time_length
 
 class Join(models.Model):
     id = models.AutoField(primary_key = True)
@@ -182,7 +234,7 @@ class Join(models.Model):
     posted_at = models.DateTimeField(default = timezone.now)
 
     # 创建参与记录
-    def create_join(user_id, activity_id, start_time, end_time, state=0):
+    def create_join(self,user_id, activity_id, start_time, end_time, state=0):
         join = Join()
         join.user_id = user_id
         join.activity_id = activity_id
@@ -190,31 +242,34 @@ class Join(models.Model):
         join.end_time = end_time
         join.state = state
         join.save()
+        return join
 
     # 更改参与信息
-    def update_join(join_id, start_time, end_time):
+    def update_join(self,join_id, start_time, end_time):
         try:
             join = Join.objects.get(id=join_id)
-        except DoNotExist:
+        except Join.DoesNotExist:
             return None
         join.start_time = start_time
         join.end_time = end_time
         join.save()
+        return join
 
     # 取消参与
-    def cancel_join(join_id):
+    def cancel_join(self,join_id):
         try:
             join = Join.objects.get(id=join_id)
-        except DoNotExist:
+        except Join.DoesNotExist:
             return None
         join.state = 1
         join.save()
+        return join
 
     # 删除参与
-    def remove_join(join_id):
+    def remove_join(self,join_id):
         try:
             join = Join.objects.get(id=join_id)
-        except DoNotExist:
+        except Join.DoesNotExist:
             return None
         join.delete()
 
@@ -228,30 +283,32 @@ class Msg(models.Model):
     state = models.IntegerField(default = 0)
 
     #创建消息
-    def create_msg(from_user_id,receive_user_id,title,content):
+    def create_msg(self,from_user_id,receive_user_id,title,content):
         msg = Msg()
         msg.content = content
         msg.title = title
         msg.from_user_id = from_user_id
         msg.receive_user_id = receive_user_id
         msg.save()
+        return msg
 
     # 删除消息
-    def remove_msg(msg_id):
+    def remove_msg(self,msg_id):
         try:
             target = Msg.objects.get(id=msg_id)
-        except DoNotExist:
+        except Msg.DoesNotExist:
             return None
         target.delete()
 
     # 设置消息为已读
-    def set_msg_read(msg_id):
+    def set_msg_read(self,msg_id):
         try:
             target = Msg.objects.get(id=msg_id)
-        except DoNotExist:
+        except Msg.DoesNotExist:
             return None
         target.state = 1
         target.save()
+        return target
 
 
 
