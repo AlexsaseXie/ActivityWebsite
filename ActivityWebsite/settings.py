@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'amt.wsgi.application'
+WSGI_APPLICATION = 'ActivityWebsite.wsgi.application'
 
 
 # Database
