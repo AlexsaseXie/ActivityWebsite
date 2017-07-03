@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    {% include 'messages.html' %}
+<h3>创建活动</h3>
+    {% if privilege >= 1 %}
+<div>
+    <form method="post" action="{% url 'apply_activity' %}">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_form form %}
+        {% buttons submit='提交' %}{% endbuttons %}
+    </form>
+    <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">返回</button>
+    </form>
+</div>
+    {% else %}
+        <div>
+            你的权限不够，先去认证吧！
+            <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+                <button type="submit" class="btn btn-primary">返回</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

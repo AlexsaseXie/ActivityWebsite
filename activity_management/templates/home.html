@@ -1,1 +1,22 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    {% include 'messages.html' %}
+<table>
+    <tbody class="table">
+        {% for act in activities %}
+        <tr>
+            <td>
+                <h3><a href="{% url 'show_activity' act.id %}">{{act.name}}</a></h3>
+                <div class="pull-right">
+                    <h4>{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' act.user_id.id %}"><b>{{act.user_id}}</b></a>
+                    开始时间{% bootstrap_icon 'time' %}{{act.start_time}}
+                    时长{% bootstrap_icon 'time' %}{{act.time_length}}min</h4>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

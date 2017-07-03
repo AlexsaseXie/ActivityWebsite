@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from . import auth_views
+from . import user_views
 
 urlpatterns = [
     # home page
@@ -23,4 +24,15 @@ urlpatterns = [
     url(r'change_info$', views.change_info, name='change_info'),
     url(r'change_info/submit$', views.change_info_submit, name='change_info_submit'),
 
+    #activity
+    url(r'apply_activity$',views.apply_activity,name = 'apply_activity'),
+    url(r'show_activity/([1-9][0-9]*)$',views.show_activity,name = 'show_activity'),
+    url(r'join_activity/([1-9][0-9]*)$', views.join_activity,name='join_activity'),
+    url(r'quit_activity/([1-9][0-9]*)$',views.quit_activity,name = 'quit_activity'),
+    url(r'join_activity_list/([1-9][0-9]*)$',views.join_actvity_list,name = 'join_activity_list'),
+    url(r'cancel_activity_join/([1-9][0-9]*)$',views.cancel_activity_join,name = 'cancel_activity_join'),
+    url(r'clear_activity_join/([1-9][0-9]*)$',views.clear_activity_join,name = 'clear_activity_join'),
+    url(r'change_activity_info/([1-9][0-9]*)$',views.change_activity_info,name = 'change_activity_info'),
+    url(r'user_info$', user_views.user_info, name='user_info'),
+    url(r'show_user_info/([1-9][0-9]*)$',user_views.show_user_info,name = 'show_user_info'),
 ]
