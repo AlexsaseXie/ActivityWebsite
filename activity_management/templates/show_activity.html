@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% include "messages.html" %}
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>{{activity.name}}</h3>
+        <small>
+            {% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' activity.user_id.id %}"><strong>{{activity.user_id}}</strong></a>
+            {% bootstrap_icon 'time' %}{{activity.created_at}}
+        </small>
+    </div>
+    <div class="panel-body word-wrap">
+        活动类型：{{ activity.type }}
+    </div>
+    <div class="panel-body word-wrap">
+        活动描述：{{ activity.description }}
+    </div>
+    <div class="panel-body word-wrap">
+        限制人数：{{ activity.capacity }}
+    </div>
+    <div class="panel-body word-wrap">
+        开始时间：{{ activity.start_time }}
+    </div>
+    <div class="panel-body word-wrap">
+        结束时间：{{ activity.end_time }}
+    </div>
+    {% if activity.user_id_id == user.id %}
+        <div class="panel-body word-wrap">
+            当前报名人数：{{ activity.want_to_join_count }}
+            <form method="post" action="{% url 'join_activity_list' activity.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">查看所有报名用户</button>
+            </form>
+        </div>
+        <div class="panel-body word-wrap">
+            活动状态：
+                        {% if activity.state == 0  %} 挂起中 {% endif %}
+                        {% if activity.state == 1  %} 申请中 {% endif %}
+                        {% if activity.state == 2  %} 被创建者取消 {% endif %}
+                        {% if activity.state == 3  %} 被管理员禁用 {% endif %}
+                        {% if activity.state == 4  %} 安排未中 {% endif %}
+                        {% if activity.state == 5  %} 等待举办 {% endif %}
+                        {% if activity.state == 6  %} 完成 {% endif %}
+        </div>
+    {% else %}
+        <div class="panel-body word-wrap">
+            当前报名人数：{{ activity.want_to_join_count }}
+        </div>
+        <div class="panel-body word-wrap">
+            活动状态：
+                        {% if activity.state == 0  %} 挂起中 {% endif %}
+                        {% if activity.state == 1  %} 申请中 {% endif %}
+                        {% if activity.state == 2  %} 被创建者取消 {% endif %}
+                        {% if activity.state == 3  %} 被管理员禁用 {% endif %}
+                        {% if activity.state == 4  %} 安排未中 {% endif %}
+                        {% if activity.state == 5  %} 等待举办 {% endif %}
+                        {% if activity.state == 6  %} 完成 {% endif %}
+        </div>
+    {% endif %}
+    <div class="panel-footer"></div>
+</div>
+
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
+    {% if activity.user_id_id == user.id %}
+           <form method="post" action="{% url 'change_activity_info' activity.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">修改活动信息</button>
+           </form>
+            {% if activity.state == 1 %}
+                <form method="post" action="{% url 'cancel_activity' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">取消这个活动</button>
+                </form>
+            {% else%}
+                {%  if activity.state == 2 %}
+                    <form method="post" action="{% url 'resume_activity' activity.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">恢复这个活动</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+    {% else %}
+        {% if user.is_authenticated and activity.state == 1%}
+            {% if not joined %}
+                <form method="post" action="{% url 'join_activity' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">报名参加</button>
+                </form>
+            {% else %}
+                <form method="post" action="{% url 'quit_activity' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">取消参加</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

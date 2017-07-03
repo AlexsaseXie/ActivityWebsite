@@ -53,7 +53,13 @@ def log_in_submit(request):
         return HttpResponse('Require refused: Incorrect username or password.')
 
     auth.login(request, user)
-    return redirect('home')
+    privilege = UserProfile.find_user_privilege(UserProfile(),request.user.id)
+    if not privilege:
+        return redirect('home')
+    elif privilege < 2 :
+        return redirect('home')
+    else :
+        return redirect('admin_home')
 
 
 @login_required

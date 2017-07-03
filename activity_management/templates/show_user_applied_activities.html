@@ -2,12 +2,7 @@
 {% load bootstrap3 %}
 {% block content %}
     {% include 'messages.html' %}
-    <form method="post" action="{% url 'home' %}">
-                {% csrf_token %}
-                {% bootstrap_form_errors form %}
-                {% bootstrap_form form %}
-                {% buttons submit='查看该日期的活动' %}{% endbuttons %}
-    </form>
+    <h4>用户{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' user.id %}"><b>{{ user.username}}</b></a>创建的活动有：</h4>
 <table>
     <tbody class="table">
         {% for act in activities %}
@@ -20,7 +15,7 @@
                         地点{% bootstrap_icon 'home' %} {{act.place }}</h4>
                     <h4>
                         开始时间{% bootstrap_icon 'time' %}{{act.start_time}}
-                        时长{% bootstrap_icon 'time' %}{{act.time_length}}min</h4>
+                        结束时间{% bootstrap_icon 'time' %}{{act.end_time}}</h4>
                     <h4>
                         <b>状态：</b>{% bootstrap_icon 'flag' %}
                         {% if act.state == 0  %} 挂起中 {% endif %}
@@ -37,5 +32,9 @@
         {% endfor %}
     </tbody>
 </table>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
 
 {% endblock %}
