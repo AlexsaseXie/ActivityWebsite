@@ -6,14 +6,22 @@ from django.utils import timezone
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 
-from .forms import ActivityForm
+from .forms import ActivityForm,DateForm
 
 # Create your views here.
 
 def home_page(request):
-    time_str = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
-    activities = Activity.find_activity_in_date(Activity(),time_str)
-    return render(request, 'home.html',{'activities' : activities})
+    if request.method == 'POST':
+        form = DateForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            date = cd['date']
+            activities = Activity.find_activity_in_date_available(Activity(),date)
+            return render(request, 'home.html', {'activities': activities, 'form': form})
+
+    form = DateForm(initial={'date': timezone.now().date()})
+    activities = Activity.find_activity_in_date_available(Activity(), timezone.now().date())
+    return render(request, 'home.html', {'activities': activities, 'form': form})
 
 @login_required
 def change_info(request):
@@ -48,6 +56,7 @@ def apply_activity(request):
     form = ActivityForm(params)
     if form.is_valid():
         post = form.save(commit=False)
+        post.state = 1
         post.user_id_id = request.user.id
         post.priority = 0
         post.want_to_join_count = 0
@@ -124,5 +133,25 @@ def change_activity_info(request,activity_id):
 
     form = ActivityForm(instance=activity)
     return render(request, 'change_activity_info.html', {'form': form, 'activity': activity})
+
+
+@login_required
+def cancel_activity(request,activity_id):
+    Activity.update_activity_state(Activity(),activity_id,newstate = 2)
+    return redirect('show_activity',activity_id)
+
+
+@login_required
+def resume_activity(request,activity_id):
+    Activity.update_activity_state(Activity(),activity_id,newstate = 1)
+    return redirect('show_activity',activity_id)
+
+
+def show_user_applied_activities(request,user_id):
+    activities = UserProfile.find_user_created_activities(UserProfile(),user_id).order_by('start_time')
+    user = UserProfile.find_user_by_id(UserProfile(),user_id)[0]
+    return render(request,'show_user_applied_activities.html',{'activities':activities,'user':user})
+
+
 
 

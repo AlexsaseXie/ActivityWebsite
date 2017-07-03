@@ -34,11 +34,28 @@
             </form>
         </div>
         <div class="panel-body word-wrap">
-            活动状态：{{ activity.state }}
+            活动状态：
+                        {% if activity.state == 0  %} 挂起中 {% endif %}
+                        {% if activity.state == 1  %} 申请中 {% endif %}
+                        {% if activity.state == 2  %} 被创建者取消 {% endif %}
+                        {% if activity.state == 3  %} 被管理员禁用 {% endif %}
+                        {% if activity.state == 4  %} 安排未中 {% endif %}
+                        {% if activity.state == 5  %} 等待举办 {% endif %}
+                        {% if activity.state == 6  %} 完成 {% endif %}
         </div>
     {% else %}
         <div class="panel-body word-wrap">
             当前报名人数：{{ activity.want_to_join_count }}
+        </div>
+        <div class="panel-body word-wrap">
+            活动状态：
+                        {% if activity.state == 0  %} 挂起中 {% endif %}
+                        {% if activity.state == 1  %} 申请中 {% endif %}
+                        {% if activity.state == 2  %} 被创建者取消 {% endif %}
+                        {% if activity.state == 3  %} 被管理员禁用 {% endif %}
+                        {% if activity.state == 4  %} 安排未中 {% endif %}
+                        {% if activity.state == 5  %} 等待举办 {% endif %}
+                        {% if activity.state == 6  %} 完成 {% endif %}
         </div>
     {% endif %}
     <div class="panel-footer"></div>
@@ -53,8 +70,21 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">修改活动信息</button>
            </form>
+            {% if activity.state == 1 %}
+                <form method="post" action="{% url 'cancel_activity' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">取消这个活动</button>
+                </form>
+            {% else%}
+                {%  if activity.state == 2 %}
+                    <form method="post" action="{% url 'resume_activity' activity.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">恢复这个活动</button>
+                    </form>
+                {% endif %}
+            {% endif %}
     {% else %}
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and activity.state == 1%}
             {% if not joined %}
                 <form method="post" action="{% url 'join_activity' activity.id %}">
                     {% csrf_token %}

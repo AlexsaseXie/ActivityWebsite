@@ -1,17 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 {% load bootstrap3 %}
 {% block content %}
     {% include 'messages.html' %}
-    <form method="post" action="{% url 'home' %}">
+            <form method="post" action="">
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 {% bootstrap_form form %}
-                {% buttons submit='查看该日期的活动' %}{% endbuttons %}
-    </form>
+                <input type = "submit" name = "search" value="查看该日期的活动">
+                <input type = "submit" name = "arrange" value="安排该日期的活动">
+            </form>
 <table>
     <tbody class="table">
         {% for act in activities %}
-        <tr>
+        <table>
             <td>
                 <h3><a href="{% url 'show_activity' act.id %}">{{act.name}}</a></h3>
                 <div class="pull-right">
@@ -33,7 +34,20 @@
                     </h4>
                 </div>
             </td>
-        </tr>
+            <td>
+                {% if act.state == 1 %}
+                        <form method="post" action="{% url 'ban_activity' act.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">禁用该活动</button>
+                        </form>
+                {% elif act.state == 3 %}
+                        <form method="post" action="{% url 'lift_activity' act.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">解禁该活动</button>
+                        </form>
+                {% endif %}
+            </td>
+        </table>
         {% endfor %}
     </tbody>
 </table>

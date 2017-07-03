@@ -107,8 +107,13 @@ class UserProfile(models.Model):
         else:
             return True
 
+    #返回用户创建的活动列表（活动列表）
+    def find_user_created_activities(self,user_id):
+        activities = Activity.objects.filter(user_id=user_id)
+        return activities
+
     # 返回某用户创建的活动列表（活动列表）
-    def find_user_created_activities(self,user_id, state):
+    def find_user_created_activities_in_state(self,user_id, state):
         activities = Activity.objects.filter(user_id=user_id, state=state)
         return activities
 
@@ -235,8 +240,23 @@ class Activity(models.Model):
 
     #返回日期的所有活动
     def find_activity_in_date(self,search_date):
-        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s)'
+        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ORDER BY ' \
+                'start_time,end_time'
         activities = Activity.objects.raw(query,[search_date])
+        return activities
+
+    #返回日期的所有可以报名的活动
+    def find_activity_in_date_available(self,search_date):
+        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \
+                'AND (state = 1 OR state = 5) ORDER BY start_time,end_time'
+        activities = Activity.objects.raw(query, [search_date])
+        return activities
+
+    #返回日期内所有申请中的活动
+    def find_activity_in_date_state(self,search_date):
+        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \
+                'AND state = 1 ORDER BY end_time,start_time'
+        activities = Activity.objects.raw(query, [search_date])
         return activities
 
     #返回所在日期，该类型的所有活动
