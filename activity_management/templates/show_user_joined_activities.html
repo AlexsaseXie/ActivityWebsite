@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    {% include 'messages.html' %}
+        <form method="post" action="{% url 'show_user_joined_activities' %}">
+                {% csrf_token %}
+                {% bootstrap_form_errors form %}
+                {% bootstrap_form form %}
+                {% buttons submit='查看该日期的活动' %}{% endbuttons %}
+        </form>
+    <h4>您{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' user.id %}"><b>{{ user.username}}</b></a>参与的活动有：</h4>
+<table>
+    <tbody class="table">
+        {% for join in joins %}
+        <tr>
+            <td>
+                <h3><a href="{% url 'show_activity' join.activity_id.id %}">{{join.activity_id.name}}</a></h3>
+                <div class="pull-right">
+                    <h4>{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' join.activity_id.user_id.id %}"><b>{{join.activity_id.user_id}}</b></a>
+                        类别{% bootstrap_icon 'th-large' %}{{join.activity_id.type }}
+                        地点{% bootstrap_icon 'home' %} {{join.activity_id.place }}</h4>
+                    <h4>
+                        开始时间{% bootstrap_icon 'time' %}{{join.activity_id.start_time}}
+                        结束时间{% bootstrap_icon 'time' %}{{join.activity_id.end_time}}</h4>
+                    <h4>
+                        <b>状态：</b>{% bootstrap_icon 'flag' %}
+                        {% if join.activity_id.state == 0  %} 挂起中 {% endif %}
+                        {% if join.activity_id.state == 1  %} 申请中 {% endif %}
+                        {% if join.activity_id.state == 2  %} 被创建者取消 {% endif %}
+                        {% if join.activity_id.state == 3  %} 被管理员禁用 {% endif %}
+                        {% if join.activity_id.state == 4  %} 安排未中 {% endif %}
+                        {% if join.activity_id.state == 5  %} 等待举办 {% endif %}
+                        {% if join.activity_id.state == 6  %} 完成 {% endif %}
+                    </h4>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
+
+{% endblock %}

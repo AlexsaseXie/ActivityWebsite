@@ -44,6 +44,8 @@ def change_info_submit(request):
     UserProfile.update_user_info(UserProfile(), request.user.id, None, password, real_name, email)
     return redirect('home')
 
+#活动相关
+
 def show_activity(request,activity_id):
     act = Activity.find_activity(Activity(),activity_id)
     return render(request, 'show_activity.html' ,{'activity':act,'joined': UserProfile.check_user_join_activity(UserProfile(),request.user.id,activity_id)})
@@ -148,10 +150,34 @@ def resume_activity(request,activity_id):
 
 
 def show_user_applied_activities(request,user_id):
-    activities = UserProfile.find_user_created_activities(UserProfile(),user_id).order_by('start_time')
+    if request.method == 'POST':
+        form = DateForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            date = cd['date']
+            activities = UserProfile.find_user_created_activities_in_date(UserProfile(),user_id,date)
+            user = UserProfile.find_user_by_id(UserProfile(), user_id)[0]
+            return render(request, 'show_user_applied_activities.html', {'activities': activities,'user':user, 'form': form})
+
+    form = DateForm(initial={'date': timezone.now().date()})
+    activities = UserProfile.find_user_created_activities_in_date(UserProfile(),user_id,timezone.now().date())
     user = UserProfile.find_user_by_id(UserProfile(),user_id)[0]
-    return render(request,'show_user_applied_activities.html',{'activities':activities,'user':user})
+    return render(request,'show_user_applied_activities.html',{'activities':activities,'user':user,'form':form})
 
 
+@login_required
+def show_user_joined_activities(request):
+    if request.method == 'POST':
+        form = DateForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            date = cd['date']
+            joins = UserProfile.find_user_joined_activities(UserProfile(), request.user.id,
+                                                            search_date = date)
+            return render(request, 'show_user_joined_activities.html', {'joins': joins,'form':form})
+
+    form = DateForm(initial={'date': timezone.now().date()})
+    joins = UserProfile.find_user_joined_activities(UserProfile(),request.user.id,search_date = timezone.now().date())
+    return render(request,'show_user_joined_activities.html',{'joins': joins,'form':form})
 
 

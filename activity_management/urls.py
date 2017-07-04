@@ -36,9 +36,10 @@ urlpatterns = [
     url(r'change_activity_info/([1-9][0-9]*)$',views.change_activity_info,name = 'change_activity_info'),
     url(r'cancel_activity/([1-9][0-9]*)$',views.cancel_activity,name = 'cancel_activity'),
     url(r'resume_activity/([1-9][0-9]*)$',views.resume_activity,name = 'resume_activity'),
-    url(r'user_info$', user_views.user_info, name='user_info'),
+    #url(r'user_info$', user_views.user_info, name='user_info'),
     url(r'show_user_info/([1-9][0-9]*)$',user_views.show_user_info,name = 'show_user_info'),
     url(r'show_user_applied_activities/([1-9][0-9]*)$',views.show_user_applied_activities,name = 'show_user_applied_activities'),
+    url(r'show_user_joined_activities$',views.show_user_joined_activities,name = 'show_user_joined_activities'),
 
     #admin home page
     url(r'admin_home$', admin_views.admin_home, name='admin_home'),

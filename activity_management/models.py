@@ -69,13 +69,13 @@ class UserProfile(models.Model):
         except User.DoesNotExist:
             return None
         targetProfile = UserProfile.objects.get(user_id=user_id)
-        if new_name!=None:
+        if new_name:
             target.username = new_name
-        if new_password!=None:
+        if new_password:
             target.set_password(new_password)
-        if new_email!=None:
+        if new_email:
             target.email = new_email
-        if new_real_name!=None:
+        if new_real_name:
             targetProfile.real_name = new_real_name
         target.save()
         targetProfile.save()
@@ -117,10 +117,17 @@ class UserProfile(models.Model):
         activities = Activity.objects.filter(user_id=user_id, state=state)
         return activities
 
-    # 返回某用户参加的活动列表（参与记录）
-    def find_user_joined_activities(self,user_id, state=0):
-        activities = Join.objects.filter(user_id=user_id, state=state)
+    # 返回某用户创建的某日期的活动列表
+    def find_user_created_activities_in_date(self,user_id,search_date):
+        query = 'SELECT *  FROM activity_management_activity WHERE user_id_id = %s  AND DATEDIFF(start_time,%s) = 0 ORDER BY start_time'
+        activities = Activity.objects.raw(query, [user_id, search_date])
         return activities
+
+    # 返回某用户参加的活动列表（参与记录）
+    def find_user_joined_activities(self,user_id ,search_date,state = 0):
+        query = 'SELECT *  FROM activity_management_join WHERE user_id_id = %s AND state = %s AND DATEDIFF(start_time,%s) = 0 ORDER BY start_time'
+        join = Join.objects.raw(query,[ user_id ,state ,search_date ])
+        return join
 
     # 返回某用户的所有消息
     def find_user_msgs(self,user_id, state):
@@ -195,29 +202,29 @@ class Activity(models.Model):
             activity = Activity.objects.get(id=activity_id)
         except Activity.DoesNotExist:
             return None
-        if user_id!=None:
+        if user_id:
             activity.user_id = user_id
-        if place!=None:
+        if place:
             activity.place = place
-        if start_time!=None:
+        if start_time:
             activity.start_time = start_time
-        if end_time!=None:
+        if end_time:
             activity.end_time = end_time
-        if state!=None:
+        if state:
             activity.state = state
-        if capacity!=None:
+        if capacity:
             activity.capacity = capacity
-        if type!=None:
+        if type:
             activity.type = type
-        if name!=None:
+        if name:
             activity.name = name
-        if description!=None:
+        if description:
             activity.description = description
-        if priority!=None:
+        if priority:
             activity.priority = priority
-        if want_to_join_count!=None:
+        if want_to_join_count:
             activity.want_to_join_count = want_to_join_count
-        if created_at!=None:
+        if created_at:
             activity.created_at = created_at
         activity.save()
         return activity
