@@ -3,22 +3,19 @@
 {% block content %}
     {% include 'messages.html' %}
     <table>
-        <tbody class="table">
+        <tbody class="table" align="left">
             {% for msg in msgs %}
                 <tr>
-                    <h3>消息{{ msg.id }}：</h3>
-                </tr>
-                <tr>
                     <td>
-                        <div class="pull-right">
-                            <h4>用户名：{% bootstrap_icon 'user' %}<b>{{msg.from_user_id}}</b></h4>
+                        <div class="pull-left">
+                            <h3>标题：{% bootstrap_icon 'title' %}<b>{{msg.title}}</b></h3>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div>
-                            <h4>标题：{% bootstrap_icon 'title' %}<b>{{msg.title}}</b></h4>
+                            <h4>用户名：{% bootstrap_icon 'user' %}<b>{{msg.from_user_id}}</b></h4>
                         </div>
                     </td>
                 </tr>
