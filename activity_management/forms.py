@@ -19,4 +19,4 @@ class ActivitySearchForm(forms.ModelForm):
 class MessageForm(forms.Form):
     receive_user_name = forms.CharField(max_length=100,label='发送对象')
     title = forms.CharField(max_length=100,label='消息标题')
-    content = forms.CharField(label='消息内容')
+    content = forms.CharField(max_length = 300 ,label = '消息内容')
