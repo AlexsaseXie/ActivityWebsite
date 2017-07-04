@@ -8,3 +8,10 @@ class ActivityForm(forms.ModelForm):
 
 class DateForm(forms.Form):
     date = forms.DateField(label = 'date')
+
+
+class ActivitySearchForm(forms.ModelForm):
+    class Meta:
+        model = Activity
+        fields = ('name','type','place','state')
+        date = forms.DateField(label = 'date')
