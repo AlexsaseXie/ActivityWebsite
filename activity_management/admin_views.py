@@ -37,7 +37,7 @@ def ban_activity(request,activity_id):
 
 
 def lift_activity(request,activity_id):
-    Activity.update_activity_state(Activity(),activity_id ,newstate=1)
+    Activity.update_activity_state(Activity(),activity_id,newstate=1)
     messages.info(request,'解禁活动成功')
     return redirect('admin_home')
 
@@ -60,3 +60,34 @@ def arrange_activity_for_date(date):
                 act.state = 4
                 act.save()
     return
+
+
+# m._b S
+def degrade_user(request, user_id):
+    if UserProfile.find_user_privilege(UserProfile(), user_id) == 1:
+        UserProfile.change_user_privilege(UserProfile(), user_id, 0)
+
+    return admin_user_info(request, user_id)
+
+
+def upgrade_user(request, user_id):
+    if UserProfile.find_user_privilege(UserProfile(), user_id) == 0:
+        UserProfile.change_user_privilege(UserProfile(), user_id, 1)
+
+    return admin_user_info(request, user_id)
+
+
+def admin_user_info(request, user_id):
+    user = UserProfile.find_user_by_id(UserProfile(), user_id)
+    if UserProfile.find_user_privilege(UserProfile(), request.user.id) == 2:
+        return render(request, 'admin_user_info.html', {'user_obj': user[0], 'user_profile': user[1]})
+    else:
+        return HttpResponse('Require refused: authentication failed.')
+
+
+@login_required
+def enter_admin(request):
+    if UserProfile.find_user_privilege(UserProfile(), request.user.id) == 2:
+        return redirect('admin_home')
+    else:
+        return HttpResponse('Require refused: authentication failed.')

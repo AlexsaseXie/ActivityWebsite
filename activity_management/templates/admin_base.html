@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title> 一个活动管理网站</title>
+    <title> 活动管理网站（管理员模式）</title>
     {% load static %}
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -10,16 +10,20 @@
 <nav>
     <ul class ="nav nav-pills pull-left">
         <li role="presentation">
-            <a href = "{% url 'home' %}">管理员模式</a>
+            <a href = "{% url 'home' %}">退出管理员模式</a>
         </li>
     </ul>
     <ul class="nav nav-pills pull-right">
+            <li role="presentation">
+                <a href="{% url 'admin_user_info' user.id %}">查看个人信息</a>
+            </li>
             <li role="presentation">
                 <a href="{% url 'log_out' %}">登出(<b>{{user.username}}</b>)</a>
             </li>
     </ul>
 </nav>
 <body>
+
     <div class="container">
         <div class="header clearfix">
         </div>

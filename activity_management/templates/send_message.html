@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content%}
+    {% include 'messages.html' %}
+<h3>发送消息</h3>
+<div>
+    <form method="post" action="{% url 'send_message' %}">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_form form %}
+        {% buttons submit='发送' %}{% endbuttons %}
+    </form>
+    <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">返回</button>
+    </form>
+</div>
+{% endblock %}

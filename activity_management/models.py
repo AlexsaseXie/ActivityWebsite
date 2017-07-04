@@ -25,6 +25,14 @@ class UserProfile(models.Model):
         else:
             return True
 
+    # 通过用户名获得某用户的id
+    def get_user_id(self, username):
+        ulist = User.objects.filter(username=username)
+        if not ulist:
+            return -1
+        else:
+            return ulist[0].id
+
     #创建新用户
     def create_userprofile(self,uname, password, real_name, email, privilege, applied_activity_count=0,
                            admitted_activity_count=0, joined_activity_count=0):
@@ -383,6 +391,11 @@ class Msg(models.Model):
         target.state = 1
         target.save()
         return target
+
+    # 找到某用户的相关消息
+    def find_all_msgs(self,user_id,state=0):
+        msgs = Msg.objects.filter(receive_user_id=user_id, state=state)
+        return msgs
 
 
 

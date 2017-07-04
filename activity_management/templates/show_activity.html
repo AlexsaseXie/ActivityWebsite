@@ -83,7 +83,7 @@
                     </form>
                 {% endif %}
             {% endif %}
-    {% else %}
+    {% endif %}
         {% if user.is_authenticated %}
             {% if activity.state == 1 or activity.state == 5 %}
                 {% if not joined %}
@@ -99,5 +99,5 @@
                 {% endif %}
             {% endif %}
         {% endif %}
-    {% endif %}
+
 {% endblock %}

@@ -1,6 +1,4 @@
-<!modified by Stone Stone>
-
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 {% load bootstrap3 %}
 {% block content%}
 
@@ -36,11 +34,19 @@
             <hr>
 
         {% if user.is_authenticated %}
-            {% if user_obj.id == user.id %}
-                <form method="post" action="{% url 'change_info' %}">
+            {% if user_obj.id != user.id %}
+                {% if user_profile.privilege == 0 %}
+                <form method="post" action="{% url 'upgrade_user' user_obj.id%}">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">修改</button>
+                    <button type="submit" class="btn btn-primary">升级用户</button>
                 </form>
+                {% endif %}
+                {% if user_profile.privilege == 1 %}
+                <form method="post" action="{% url 'degrade_user' user_obj.id%}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">降级用户</button>
+                </form>
+                {% endif %}
             {% endif %}
         {% endif %}
 
