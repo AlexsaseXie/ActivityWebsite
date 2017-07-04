@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 
-from .forms import ActivityForm,DateForm
+from .forms import ActivityForm,DateForm,MessageForm
 
 # Create your views here.
 
@@ -23,29 +23,8 @@ def home_page(request):
     activities = Activity.find_activity_in_date_available(Activity(), timezone.now().date())
     return render(request, 'home.html', {'activities': activities, 'form': form})
 
-@login_required
-def change_info(request):
-    return render(request, 'change_info.html')
-
-@login_required
-def change_info_submit(request):
-    password = request.POST.get('password')
-    check_password = request.POST.get('check_password')
-    email = request.POST.get('email')
-    real_name = request.POST.get('real_name')
-
-    # examination
-    if not password == check_password:
-        # return redirect('sign_up')
-        # or
-        return HttpResponse('Require refused: Password not match.')
-
-    # update
-    UserProfile.update_user_info(UserProfile(), request.user.id, None, password, real_name, email)
-    return redirect('home')
 
 #活动相关
-
 def show_activity(request,activity_id):
     act = Activity.find_activity(Activity(),activity_id)
     return render(request, 'show_activity.html' ,{'activity':act,'joined': UserProfile.check_user_join_activity(UserProfile(),request.user.id,activity_id)})
@@ -180,4 +159,35 @@ def show_user_joined_activities(request):
     joins = UserProfile.find_user_joined_activities(UserProfile(),request.user.id,search_date = timezone.now().date())
     return render(request,'show_user_joined_activities.html',{'joins': joins,'form':form})
 
+@login_required
+def send_message(request):
+    if (request.method == 'POST'):
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            receive_user_name = cd['receive_user_name']
+            title = cd['title']
+            content = cd['content']
+            receive_user_id = UserProfile.get_user_id(UserProfile(), receive_user_name)
+            Msg.create_msg(Msg(), request.user, receive_user_id, title, content)
+    form = MessageForm()
+    '''
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.from_user_id = request.user.id
+        post.receive_user_id = UserProfile.get_user_id(UserProfile(), request.POST.get('receive_user_name'))
+        post.save()
+        if (post.receive_user_id != -1):
+            messages.info(request, '消息已成功发送给用户“{}”'.format(request.POST.get('receive_user_name')))
+        else:
+            messages.info(request, '用户“{}”不存在'.format(request.POST.get('receive_user_name')))
+        form = MessageForm()
+        msg = Msg.create_msg(post.from_user_id,post.receive_user_id,request.POST.get('title'),request.POST.get('content'))
+    '''
+    return render(request, 'send_message.html', {'form': form})
+
+@login_required
+def unread_message(request):
+    msgs = Msg.find_all_msgs(Msg(), request.user.id).order_by('posted_at')
+    return render(request, 'unread_message.html',{'msgs' : msgs})
 
