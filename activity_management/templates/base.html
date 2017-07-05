@@ -19,6 +19,9 @@
     <ul class="nav nav-pills pull-right">
         {% if user.is_authenticated %}
             <li role="presentation">
+                <a href="{% url 'show_search_activities' %}">活动查询</a>
+            </li>
+            <li role="presentation">
                 <a href="{% url 'show_user_joined_activities' %}">我参与的活动</a>
             </li>
             <li role="presentation">

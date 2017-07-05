@@ -16,6 +16,21 @@
             <button type="submit" class="btn btn-primary">返回</button>
     </form>
 </div>
+<hr>
+        <h3>从文件批量导入</h3>
+    <div>
+
+        <form method="post" action="{% url 'multi_apply_submit'%}" enctype = "multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="file">请上传文件</label>
+                <input type="file" id="file" name="file" class="form-control" accept=".txt" required/>
+            </div>
+            <button type="submit" class="btn btn-primary" >导入</button>
+        </form>
+
+    </div>
     {% else %}
         <div>
             你的权限不够，先去认证吧！

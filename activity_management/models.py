@@ -170,7 +170,7 @@ class Activity(models.Model):
 
     # 创建活动
     def create_activity(self,user_id, place, start_time, end_time, capacity, type, name, description, priority, created_at,
-                        want_to_join_count=0, state=0):
+                        want_to_join_count=0, state=1):
         activity = Activity()
         activity.user_id = user_id
         activity.place = place
@@ -259,6 +259,34 @@ class Activity(models.Model):
                 'start_time,end_time'
         activities = Activity.objects.raw(query,[search_date])
         return activities
+
+    # 搜索活动
+    def search_activity(self, search_date, search_name, search_type, search_place, search_state):
+        if search_date:
+            query = 'SELECT * FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) '
+            all_activities = Activity.objects.raw(query, [search_date])
+        else:
+            all_activities = Activity.objects.all()
+        result_activities = []
+        for act in all_activities:
+            flag = True
+            if search_name:
+                if act.name != search_name:
+                    flag = False
+            if search_type:
+                if act.type != search_type:
+                    flag = False
+            if search_place:
+                if act.place != search_place:
+                    flag = False
+            if search_state:
+                if act.state != search_state:
+                    flag = False
+            if flag:
+                result_activities.append(act)
+
+        return result_activities
+
 
     #返回日期的所有可以报名的活动
     def find_activity_in_date_available(self,search_date):

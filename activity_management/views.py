@@ -5,8 +5,10 @@ from .models import UserProfile, Activity, Join, Msg
 from django.utils import timezone
 from django.contrib import messages
 from django.views.decorators.http import require_POST
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
-from .forms import ActivityForm,DateForm,MessageForm
+from .forms import ActivityForm,DateForm,MessageForm,ActivitySearchForm
 
 # Create your views here.
 
@@ -159,6 +161,24 @@ def show_user_joined_activities(request):
     joins = UserProfile.find_user_joined_activities(UserProfile(),request.user.id,search_date = timezone.now().date())
     return render(request,'show_user_joined_activities.html',{'joins': joins,'form':form})
 
+def show_search_activities(request):
+    if request.method == 'POST':
+        form = ActivitySearchForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            search_date = cd['search_date']
+            name = cd['name']
+            place = cd['place']
+            state = cd['state']
+            type = cd['type']
+            print(name,place,type,state)
+            activities = Activity.search_activity(Activity(), search_date, search_name=name, search_type=type, search_place=place, search_state=state)
+            return render(request, 'show_search_activities.html', {'activities': activities, 'form': form})
+
+    form = ActivitySearchForm(initial={'search_date': timezone.now().date()})
+    activities = Activity.search_activity(Activity(),timezone.now().date(),search_name='',search_type='',search_place='',search_state='' )
+    return render(request, 'show_search_activities.html', {'activities': activities, 'form': form})
+
 @login_required
 def send_message(request):
     if (request.method == 'POST'):
@@ -191,3 +211,37 @@ def unread_message(request):
     msgs = Msg.find_all_msgs(Msg(), request.user.id).order_by('posted_at')
     return render(request, 'unread_message.html',{'msgs' : msgs})
 
+
+def multi_apply_submit(request):
+    privilege = UserProfile.find_user_privilege(UserProfile(), request.user.id)
+    file = request.FILES.get('file')
+
+    # file_path = file.path
+    # return HttpResponse('file:' + file_path)
+    suffix = file.name.split('.')[-1]
+    if not suffix == 'txt':
+        return HttpResponse('Require refused: incorrect file type.')
+
+    save_path = '../ActivityWebsite-master/uploadfiles/' + file.name[:-4] + '_'\
+                + timezone.now().date().__str__() + '_'\
+                + timezone.now().time().hour.__str__() + '_'\
+                + timezone.now().time().minute.__str__() + '_'\
+                + timezone.now().time().second.__str__()\
+                + '.txt'
+    path = default_storage.save(save_path, ContentFile(file.read()))
+    with open(path, 'r') as f:
+        line_list = f.readlines()
+        if not line_list:
+            return  HttpResponse('Require refused: invalid file.')
+        for line in line_list:
+            act_info = line.split(',')
+            # name, type, description, capacity, start time, end time, place
+            if not len(act_info) == 7:
+                # return HttpResponse('Require refused: incorrect input form.')
+                continue
+
+            Activity.create_activity(Activity(), request.user, act_info[6], act_info[4], act_info[5], act_info[3], act_info[1], act_info[0], act_info[2], 0, timezone.now())
+
+        form = ActivityForm()
+        messages.info(request, '已成功导入 %d 个活动' % len(line_list))
+        return render(request, 'apply_activity.html', {'form': form, 'privilege': privilege})
