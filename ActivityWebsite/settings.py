@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'activity_management',
         'USER': 'root',
-        'PASSWORD': 'x1997x',
+        'PASSWORD': 'shtoyian',
     }
 }
 
