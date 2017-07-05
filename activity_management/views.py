@@ -233,23 +233,6 @@ def multi_apply_submit(request):
 
     act_num = load_activities_from_file(request.user, path)
 
-
-    # ---
-    '''''
-    with open(path, 'r') as f:
-        line_list = f.readlines()
-        if not line_list:
-            return  HttpResponse('Require refused: invalid file.')
-        for line in line_list:
-            act_info = line.split(',')
-            # name, type, description, capacity, start time, end time, place
-            if not len(act_info) == 7:
-                # return HttpResponse('Require refused: incorrect input form.')
-                continue
-
-            Activity.create_activity(Activity(), request.user, act_info[6], act_info[4], act_info[5], act_info[3], act_info[1], act_info[0], act_info[2], 0, timezone.now())
-    
-    '''
     form = ActivityForm()
     if act_num == 0:
         messages.warning(request, '没有导入活动')
