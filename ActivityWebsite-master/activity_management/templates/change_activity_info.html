@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<h3>修改活动信息</h3>
+    {% if user.id == activity.user_id_id %}
+        <div>
+            <form method="post" action="{% url 'change_activity_info' activity.id %}">
+                {% csrf_token %}
+                {% bootstrap_form_errors form %}
+                {% bootstrap_form form %}
+                {% buttons submit='确认修改' %}{% endbuttons %}
+            </form>
+            <form method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">返回</button>
+            </form>
+        </div>
+    {% else %}
+        <div>
+            这不是你的活动，无权修改！
+            <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+                <button type="submit" class="btn btn-primary">返回</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
