@@ -7,7 +7,15 @@ from django.contrib import messages
 
 from .forms import DateForm
 
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
 
+
+@static_vars(counter = 0,lastform = 0,lastactivities = 0)
 def admin_home(request):
     #time_str = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
     if request.method == 'POST':
@@ -17,16 +25,30 @@ def admin_home(request):
                 cd = form.cleaned_data
                 date = cd['date']
                 activities = Activity.find_activity_in_date(Activity(),date)
+
+                admin_home.lastform = form
+                admin_home.lastactivities = activities
                 return render(request, 'admin_home.html', {'activities': activities, 'form': form})
             else :
                 cd = form.cleaned_data
                 date = cd['date']
                 activities = Activity.find_activity_in_date(Activity(), date)
                 arrange_activity_for_date(date)
+
+                admin_home.lastform = form
+                admin_home.lastactivities = activities
                 return render(request, 'admin_home.html', {'activities': activities, 'form': form})
 
-    form = DateForm(initial={'date': timezone.now().date()})
-    activities = Activity.find_activity_in_date(Activity(),timezone.now().date())
+    if (admin_home.counter == 0):
+        form = DateForm(initial={'date': timezone.now().date()})
+        activities = Activity.find_activity_in_date(Activity(),timezone.now().date())
+        admin_home.lastform = form
+        admin_home.lastactivities = activities
+        admin_home.counter += 1
+    else :
+        form = admin_home.lastform
+        activities = admin_home.lastactivities
+
     return render(request, 'admin_home.html',{'activities' : activities , 'form' : form})
 
 

@@ -157,7 +157,7 @@ class UserProfile(models.Model):
         joins = Join.objects.raw(query,[user_id, activity.start_time , activity.start_time,activity.end_time,activity.end_time])
         count = 0
         for join in joins:
-            count += 1
+            count +=1
         if count == 0:
             return True
         else:
