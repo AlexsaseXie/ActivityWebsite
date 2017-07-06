@@ -96,6 +96,12 @@ def arrange_activity_for_date_by_priority(date):
             act.save()
     return
 
+def admin_raise_priority(request,activity_id):
+    act = Activity.find_activity(Activity(),activity_id)
+    act.priority += 1
+    act.save()
+    return redirect('admin_show_activity',activity_id)
+
 # m._b S
 def degrade_user(request, user_id):
     if UserProfile.find_user_privilege(UserProfile(), user_id) == 1:

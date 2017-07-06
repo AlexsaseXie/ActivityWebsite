@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^upgrade_user/admin/([1-9][0-9]*)$', admin_views.upgrade_user, name='upgrade_user'),
     url(r'^degrade_user/admin/([1-9][0-9]*)$', admin_views.degrade_user, name='degrade_user'),
     url(r'^enter_admin$', admin_views.enter_admin, name='enter_admin'),
+    url(r'^raise_priority/admin/([1-9][0-9]*)$', admin_views.admin_raise_priority, name='admin_raise_priority'),
 
     #msg
     url(r'send_message$',views.send_message,name = 'send_message'),

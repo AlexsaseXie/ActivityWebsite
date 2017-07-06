@@ -38,6 +38,15 @@
                         {% if activity.state == 5  %} 等待举办 {% endif %}
                         {% if activity.state == 6  %} 完成 {% endif %}
         </div>
+        <div class="panel-body word-wrap">
+            优先级：{{ activity.priority }}
+            {% if activity.state == 1 %}
+                <form method="post" action="{% url 'admin_raise_priority' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">提升优先级</button>
+                </form>
+            {% endif %}
+        </div>
     <div class="panel-footer"></div>
 </div>
 
