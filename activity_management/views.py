@@ -11,7 +11,15 @@ from django.core.files.storage import default_storage
 from .forms import ActivityForm,DateForm,MessageForm,ActivitySearchForm
 
 # Create your views here.
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
 
+
+@static_vars(counter = 0,lastform = 0,lastactivities = 0)
 def home_page(request):
     if request.method == 'POST':
         form = DateForm(request.POST)
@@ -19,10 +27,19 @@ def home_page(request):
             cd = form.cleaned_data
             date = cd['date']
             activities = Activity.find_activity_in_date_available(Activity(),date)
+
+            home_page.lastform = form
+            home_page.lastactivities = activities
             return render(request, 'home.html', {'activities': activities, 'form': form})
 
-    form = DateForm(initial={'date': timezone.now().date()})
-    activities = Activity.find_activity_in_date_available(Activity(), timezone.now().date())
+    if home_page.counter == 0 :
+        form = DateForm(initial={'date': timezone.now().date()})
+        activities = Activity.find_activity_in_date_available(Activity(), timezone.now().date())
+        home_page.counter +=1
+    else :
+        form = home_page.lastform
+        activities = home_page.lastactivities
+
     return render(request, 'home.html', {'activities': activities, 'form': form})
 
 
