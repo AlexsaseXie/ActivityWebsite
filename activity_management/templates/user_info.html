@@ -27,6 +27,10 @@
         {% if user_profile.privilege != 0 %}
             <div class="panel-body word-wrap">
                 成功举办的活动数目：{{ user_profile.admitted_activity_count}}
+                <form method="post" action="{% url 'show_user_applied_activities' user_profile.user.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">查看他举办的活动</button>
+                </form>
             </div>
             <hr>
         {% endif %}
