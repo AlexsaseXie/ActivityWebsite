@@ -2,12 +2,16 @@ from django import forms
 from .models import UserProfile, Activity, Join, Msg
 from django.contrib.admin import widgets
 
+
 class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
-        widgets = {'start_time':widgets.AdminSplitDateTime,'end_time':widgets.AdminSplitDateTime}
         fields = ('name', 'type','description','capacity','start_time','end_time','place')
 
+    #def __init__(self, *args, **kwargs):
+    #   super(ActivityForm, self).__init__(*args, **kwargs)
+    #   self.fields['start_time'].widget = widgets.AdminSplitDateTime()
+    #   self.fields['end_time'].widget = widgets.AdminSplitDateTime()
 
 class DateForm(forms.Form):
     date = forms.DateField(label = 'date',widget=widgets.AdminDateWidget())
