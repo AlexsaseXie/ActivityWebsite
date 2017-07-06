@@ -99,6 +99,10 @@ def upgrade_user(request, user_id):
     return admin_user_info(request, user_id)
 
 
+def admin_show_activity(request,activity_id):
+    act = Activity.find_activity(Activity(), activity_id)
+    return render(request, 'admin_show_activity.html', {'activity': act})
+
 def admin_user_info(request, user_id):
     user = UserProfile.find_user_by_id(UserProfile(), user_id)
     if UserProfile.find_user_privilege(UserProfile(), request.user.id) == 2:

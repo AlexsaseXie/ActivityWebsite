@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'admin_home$', admin_views.admin_home, name='admin_home'),
     url(r'ban_activity/([1-9][0-9]*)$',admin_views.ban_activity,name = 'ban_activity'),
     url(r'lift_activity/([1-9][0-9]*)$',admin_views.lift_activity,name = 'lift_activity'),
+    url(r'^show_activity_info/admin/([1-9][0-9]*)$', admin_views.admin_show_activity, name='admin_show_activity'),
     url(r'^show_user_info/admin/([1-9][0-9]*)$', admin_views.admin_user_info, name='admin_user_info'),
     url(r'^upgrade_user/admin/([1-9][0-9]*)$', admin_views.upgrade_user, name='upgrade_user'),
     url(r'^degrade_user/admin/([1-9][0-9]*)$', admin_views.degrade_user, name='degrade_user'),

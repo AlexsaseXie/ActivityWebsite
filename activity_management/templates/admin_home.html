@@ -14,7 +14,7 @@
         {% for act in activities %}
         <table>
             <td>
-                <h3><a href="{% url 'show_activity' act.id %}">{{act.name}}</a></h3>
+                <h3><a href="{% url 'admin_show_activity' act.id %}">{{act.name}}</a></h3>
                 <div class="pull-right">
                     <h4>{% bootstrap_icon 'user' %}<a href="{% url 'admin_user_info' act.user_id.id %}"><b>{{act.user_id}}</b></a>
                         类别{% bootstrap_icon 'th-large' %}{{act.type }}

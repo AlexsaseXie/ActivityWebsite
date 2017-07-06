@@ -32,4 +32,8 @@
         <button type="submit" class="btn btn-primary">注册</button>
     </form>
 </div>
+        <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
 {% endblock %}
