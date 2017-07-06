@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'activity_management',
     'bootstrap3',
     'dj_pagination',
+    #'apscheduler',
 ]
 
 MIDDLEWARE = [

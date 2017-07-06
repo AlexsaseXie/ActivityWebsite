@@ -37,7 +37,9 @@ def home_page(request):
     if home_page.counter == 0 :
         form = DateForm(initial={'date': timezone.now().date()})
         activities = Activity.find_activity_in_date_available(Activity(), timezone.now().date())
-        home_page.counter +=1
+        home_page.counter += 1
+        home_page.lastform = form
+        home_page.lastactivities = activities
     else :
         form = home_page.lastform
         activities = home_page.lastactivities
@@ -61,12 +63,12 @@ def apply_activity(request):
         post.state = 1
         post.user_id_id = request.user.id
         post.priority = 0
-        post.want_to_join_count = 0
+        post.want_to_join_count = 1
         post.created_at = timezone.now()
         post.save()
 
         print(post.id)
-        Join.create_join(Join(),user_id= request.user,activity_id = post,start_time= post.start_time,end_time= post.end_time,state = 1)
+        Join.create_join(Join(),user_id= request.user,activity_id = post,start_time= post.start_time,end_time= post.end_time,state = 0)
         messages.info(request, '活动《{}》创建成功'.format(post.name))
         form = ActivityForm()
 

@@ -10,7 +10,7 @@ from activity_management.views import update_ready_activities
 sched = Scheduler()
 
 
-@sched.interval_schedule(seconds=300)
+@sched.interval_schedule(seconds=10)
 def tasks():
     update_ready_activities()
 
