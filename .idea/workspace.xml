@@ -15,46 +15,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authenticate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/authenticate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_user_info.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_user_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="26" column="67" lean-forward="false" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="apply_activity.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -65,12 +25,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_show_activity.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_show_activity.html">
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+            <state relative-caret-position="69">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/activity_management/admin_views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-460">
+              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,18 +50,48 @@
       <file leaf-file-name="user_info.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activity_management/templates/user_info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
+            <state relative-caret-position="-26">
               <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_home.html">
+      <file leaf-file-name="show_user_joined_activities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_joined_activities.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_user_applied_activities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_applied_activities.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_search_activities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/show_search_activities.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -98,36 +100,34 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activity_management/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7774">
-              <caret line="338" column="24" lean-forward="false" selection-start-line="338" selection-start-column="24" selection-end-line="338" selection-end-column="24" />
+            <state relative-caret-position="347">
+              <caret line="456" column="21" lean-forward="true" selection-start-line="456" selection-start-column="21" selection-end-line="456" selection-end-column="21" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1499329997672" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
-                <marker date="1499329997672" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
-                <marker date="1499329997672" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499329997672" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
+                <marker date="1499335754511" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
+                <marker date="1499335754511" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499335754511" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/admin_views.py">
+      <file leaf-file-name="send_message.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/send_message.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="102" column="53" lean-forward="false" selection-start-line="102" selection-start-column="53" selection-end-line="102" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="276">
+              <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,15 +156,16 @@
         <option value="$PROJECT_DIR$/activity_management/templates/change_info.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/authenticate.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/apply_activity.html" />
-        <option value="$PROJECT_DIR$/activity_management/templates/unread_message.html" />
         <option value="$PROJECT_DIR$/ActivityWebsite/settings.py" />
-        <option value="$PROJECT_DIR$/activity_management/views.py" />
-        <option value="$PROJECT_DIR$/activity_management/models.py" />
         <option value="$PROJECT_DIR$/activity_management/urls.py" />
-        <option value="$PROJECT_DIR$/activity_management/admin_views.py" />
         <option value="$PROJECT_DIR$/activity_management/templates/admin_show_activity.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/user_info.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/admin_user_info.html" />
+        <option value="$PROJECT_DIR$/activity_management/models.py" />
+        <option value="$PROJECT_DIR$/activity_management/templates/show_activity.html" />
+        <option value="$PROJECT_DIR$/activity_management/views.py" />
+        <option value="$PROJECT_DIR$/activity_management/admin_views.py" />
+        <option value="$PROJECT_DIR$/activity_management/templates/unread_message.html" />
       </list>
     </option>
   </component>
@@ -512,7 +513,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1038" extended-state="1" />
+    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25287357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -547,14 +548,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_user_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -603,19 +596,19 @@
           <caret line="159" column="21" lean-forward="false" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="21" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1499329997672" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499329997672" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499329997672" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499335754511" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499335754511" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
           </folding>
         </state>
       </provider>
@@ -707,22 +700,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_applied_activities.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -734,30 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
           <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_joined_activities.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-611">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_search_activities.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -817,99 +771,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/unread_message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="28" column="20" lean-forward="false" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/user_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/send_message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/static.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/auth_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="177" column="31" lean-forward="false" selection-start-line="177" selection-start-column="31" selection-end-line="177" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="56" column="81" lean-forward="true" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/admin_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="102" column="53" lean-forward="false" selection-start-line="102" selection-start-column="53" selection-end-line="102" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,14 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="32" column="10" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -953,42 +811,182 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7774">
-          <caret line="338" column="24" lean-forward="false" selection-start-line="338" selection-start-column="24" selection-end-line="338" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1499329997672" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499329997672" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499329997672" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499329997672" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/user_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_user_info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="26" column="67" lean-forward="false" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="96" column="57" lean-forward="false" selection-start-line="96" selection-start-column="57" selection-end-line="96" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="56" column="81" lean-forward="true" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/user_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/auth_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/unread_message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1587">
+          <caret line="69" column="54" lean-forward="false" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/user_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_joined_activities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_applied_activities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/show_search_activities.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/send_message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="32" column="10" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="456" column="21" lean-forward="true" selection-start-line="456" selection-start-column="21" selection-end-line="456" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1499335754511" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499335754511" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499335754511" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="11792:12005" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="12265:12430" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="12912:13065" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499335754511" expanded="true" signature="13212:13351" ph="SELECT *,TIM... activity_management_activity" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/admin_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-460">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

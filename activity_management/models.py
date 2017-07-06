@@ -459,7 +459,7 @@ class Msg(models.Model):
 
     # 找到某用户的相关消息
     def find_all_msgs(self,user_id):
-        msgs = Msg.objects.filter(receive_user_id=user_id).order_by('state')
+        msgs = Msg.objects.filter(receive_user_id=user_id).order_by('state','-posted_at')
         return msgs
 
 

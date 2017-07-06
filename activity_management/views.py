@@ -69,6 +69,9 @@ def join_activity(request,activity_id):
         return redirect('home')
     else :
         messages.info(request, '参加活动《{}》成功'.format(activity.name))
+        Msg.create_msg(Msg(),request.user,receive_user_id= activity.user_id.id,
+                       title= '【系统】您好！我参加了您的活动'+ activity.name,
+                       content='您好！我参加了您的活动'+activity.name+'。请多关照！')
 
     activity.want_to_join_count += 1
     activity.save()
@@ -85,6 +88,10 @@ def quit_activity(request,activity_id):
     join = Join.find_join(Join(),request.user.id,activity_id,0)
     Join.remove_join(Join(),join[0].id)
     messages.info(request, '退出活动《{}》成功'.format(activity.name))
+    Msg.create_msg(Msg(), request.user, receive_user_id=activity.user_id.id,
+                   title='【系统】不好意思！我退出了您的活动' + activity.name,
+                   content='不好意思！我退出了您的活动' + activity.name + '。给您带来了麻烦，十分抱歉！')
+
     return redirect('home')
 
 @login_required
@@ -101,11 +108,19 @@ def cancel_activity_join(request,join_id):
     join.activity_id.want_to_join_count -= 1
     join.activity_id.save()
     messages.info(request, '删除用户“{}”参与您的活动《{}》成功'.format(join.user_id,join.activity_id.name))
+
+    Msg.create_msg(Msg(), request.user, receive_user_id=join.user_id.id,
+                   title='【系统】不好意思！我将您删除出了我的活动' + join.activity_id.name +'的参与列表',
+                   content='不好意思！我将您删除出了我的活动' + join.activity_id.name + '的参与列表。请您参与其他的活动。')
     return redirect('join_activity_list',join.activity_id.id)
 
 @login_required
 def clear_activity_join(request,join_id):
     join = Join.find_join_by_id(Join(),join_id)
+    Msg.create_msg(Msg(), request.user, receive_user_id=join.user_id.id,
+                   title='【系统】我将您移出了我的活动' + join.activity_id.name + '的黑名单',
+                   content='我将您移出了我的活动' + join.activity_id.name + '的黑名单。您可以重新申请此活动。')
+
     Join.remove_join(Join(),join_id)
     messages.info(request, '将用户“{}”清除出您的活动《{}》的黑名单成功'.format(join.user_id,join.activity_id.name))
     return redirect('join_activity_list',join.activity_id.id)
@@ -121,13 +136,32 @@ def change_activity_info(request,activity_id):
             form.save()
             messages.info(request, '活动《{}》修改成功'.format(activity.name))
 
+    joins = Join.find_all_join_users(Join(),activity_id,state = 0)
+    for join in joins:
+        #给报名的用户发消息
+        if request.user.id != join.user_id.id:
+            Msg.create_msg(Msg(),request.user,join.user_id.id,title= '【系统】请注意！我修改了活动'+ join.activity_id.name + '的信息' ,content= '请注意！我修改了活动'+join.activity_id.name+'的信息。请提前做好准备！')
+        join.delete()
+
     form = ActivityForm(instance=activity)
     return render(request, 'change_activity_info.html', {'form': form, 'activity': activity})
 
 
 @login_required
 def cancel_activity(request,activity_id):
-    Activity.update_activity_state(Activity(),activity_id,newstate = 2)
+    activity = Activity.find_activity(Activity(),activity_id)
+    activity.state = 2
+    activity.want_to_join_count = 0
+    activity.save()
+
+    #取消当前的报名
+    joins = Join.find_all_join_users(Join(),activity_id,state = 0)
+    for join in joins:
+        #给报名的用户发消息
+        if request.user.id != join.user_id.id:
+            Msg.create_msg(Msg(),request.user,join.user_id.id,title= '【系统】抱歉！我取消了活动'+ join.activity_id.name,content = '抱歉！我取消了活动'+join.activity_id.name+'。请参加其他的活动吧！')
+        join.delete()
+
     return redirect('show_activity',activity_id)
 
 
