@@ -434,8 +434,8 @@ class Msg(models.Model):
         return target
 
     # 找到某用户的相关消息
-    def find_all_msgs(self,user_id,state=0):
-        msgs = Msg.objects.filter(receive_user_id=user_id, state=state)
+    def find_all_msgs(self,user_id):
+        msgs = Msg.objects.filter(receive_user_id=user_id).order_by('state')
         return msgs
 
 

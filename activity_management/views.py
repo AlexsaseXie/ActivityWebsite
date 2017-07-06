@@ -215,7 +215,7 @@ def send_message(request):
 
 @login_required
 def unread_message(request):
-    msgs = Msg.find_all_msgs(Msg(), request.user.id).order_by('posted_at')
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
     return render(request, 'unread_message.html',{'msgs' : msgs})
 
 @login_required
