@@ -150,6 +150,19 @@ class UserProfile(models.Model):
             count += 1
         return count
 
+    #检查用户是否可以参加某个活动
+    def check_user_can_join_activity(self,user_id,activity_id):
+        activity = Activity.find_activity(Activity(),activity_id)
+        query = 'SELECT *  FROM activity_management_join WHERE user_id_id = %s AND state = 0 AND (NOT((start_time <= %s AND end_time <= %s) OR (start_time >= %s AND end_time >= %s)))'
+        joins = Join.objects.raw(query,[user_id, activity.start_time , activity.start_time,activity.end_time,activity.end_time])
+        count = 0
+        for join in joins:
+            count += 1
+        if count == 0:
+            return True
+        else:
+            return False
+
 class Activity(models.Model):
     id = models.AutoField(primary_key = True)
     user_id = models.ForeignKey(User)

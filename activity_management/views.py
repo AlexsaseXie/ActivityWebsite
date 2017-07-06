@@ -45,6 +45,9 @@ def apply_activity(request):
         post.want_to_join_count = 0
         post.created_at = timezone.now()
         post.save()
+
+        print(post.id)
+        Join.create_join(Join(),user_id= request.user,activity_id = post,start_time= post.start_time,end_time= post.end_time,state = 1)
         messages.info(request, '活动《{}》创建成功'.format(post.name))
         form = ActivityForm()
 
@@ -53,6 +56,10 @@ def apply_activity(request):
 @login_required
 def join_activity(request,activity_id):
     activity = Activity.find_activity(Activity(),activity_id)
+    can_join_flag = UserProfile.check_user_can_join_activity(UserProfile(),request.user.id,activity_id)
+    if not can_join_flag:
+        messages.info(request, '和当天已选活动冲突')
+        return redirect('home')
     history_join = Join.find_join(Join(),request.user.id,activity_id,1)
     if history_join:
         messages.info(request, '你被创建者拒绝加入活动《{}》'.format(activity.name))
@@ -240,7 +247,9 @@ def multi_apply_submit(request):
                 # return HttpResponse('Require refused: incorrect input form.')
                 continue
 
-            Activity.create_activity(Activity(), request.user, act_info[6], act_info[4], act_info[5], act_info[3], act_info[1], act_info[0], act_info[2], 0, timezone.now())
+            post = Activity.create_activity(Activity(), request.user, act_info[6], act_info[4], act_info[5], act_info[3], act_info[1], act_info[0], act_info[2], 0, timezone.now())
+            Join.create_join(Join(), user_id=request.user, activity_id=post, start_time=post.start_time,
+                             end_time=post.end_time, state=1)
 
         form = ActivityForm()
         messages.info(request, '已成功导入 %d 个活动' % len(line_list))
