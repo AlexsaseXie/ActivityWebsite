@@ -308,12 +308,36 @@ class Activity(models.Model):
         activities = Activity.objects.raw(query, [search_date])
         return activities
 
-    #返回日期内所有申请中的活动
+    #返回日期内所有申请中的活动，根据结束时间，想要加入的人数排序
     def find_activity_in_date_state(self,search_date):
         query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \
-                'AND state = 1 ORDER BY end_time,start_time'
+                'AND state = 1 ORDER BY end_time,-want_to_join_count,start_time'
         activities = Activity.objects.raw(query, [search_date])
         return activities
+
+    #返回日期内所有申请中的活动，按照优先级，想要加入的人数排序
+    def find_activity_in_date_order_by_priority_count(self,search_date):
+        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \
+                'AND state = 1 ORDER BY -priority,-want_to_join_count'
+        activities = Activity.objects.raw(query, [search_date])
+        return activities
+
+    #检查当天是否可以加入这个活动
+    def check_can_add_activity(self,activity_id):
+        activity = Activity.find_activity(Activity(),activity_id = activity_id)
+        query = 'SELECT *  FROM activity_management_activity WHERE state = 5 AND place =  %s AND (NOT((start_time <= %s AND end_time <= %s) OR (start_time >= %s AND end_time >= %s)))'
+        acts = Activity.objects.raw(query,[activity.place ,activity.start_time , activity.start_time,activity.end_time,activity.end_time])
+        count = 0
+        for act in acts:
+            count +=1
+            if count > 0:
+                break
+
+        if count == 0:
+            return True
+        else:
+            return False
+
 
     #返回所在日期，该类型的所有活动
     def find_activity_in_date_type(self,search_date,search_type):

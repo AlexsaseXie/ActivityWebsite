@@ -33,7 +33,7 @@ def admin_home(request):
                 cd = form.cleaned_data
                 date = cd['date']
                 activities = Activity.find_activity_in_date(Activity(), date)
-                arrange_activity_for_date(date)
+                arrange_activity_for_date_by_priority(date)
 
                 admin_home.lastform = form
                 admin_home.lastactivities = activities
@@ -83,6 +83,18 @@ def arrange_activity_for_date(date):
                 act.save()
     return
 
+#按优先级安排活动
+def arrange_activity_for_date_by_priority(date):
+    candidate_activities = Activity.find_activity_in_date_order_by_priority_count(Activity(),date)
+    for act in candidate_activities:
+        flag = Activity.check_can_add_activity(Activity(),act.id)
+        if flag:
+            act.state = 5
+            act.save()
+        else:
+            act.state = 4
+            act.save()
+    return
 
 # m._b S
 def degrade_user(request, user_id):
