@@ -315,6 +315,14 @@ class Activity(models.Model):
         activities = Activity.objects.raw(query, [search_date])
         return activities
 
+    # 搜索日期内申请中和等待举办的活动
+    def find_ready_activity_in_date_state(self, search_date):
+        query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \
+                'AND state = 1 or state = 5 ORDER BY end_time,start_time'
+        activities = Activity.objects.raw(query, [search_date])
+        return activities
+
+
     #返回日期内所有申请中的活动，按照优先级，想要加入的人数排序
     def find_activity_in_date_order_by_priority_count(self,search_date):
         query = 'SELECT *,TIMESTAMPDIFF(MINUTE,start_time,end_time) AS time_length FROM activity_management_activity WHERE TO_DAYS(start_time) = TO_DAYS(%s) ' \

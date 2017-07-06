@@ -3,6 +3,18 @@ from . import views
 from . import auth_views
 from . import user_views
 from . import admin_views
+from apscheduler.scheduler import Scheduler
+from activity_management.views import update_ready_activities
+
+
+sched = Scheduler()
+
+
+@sched.interval_schedule(seconds=300)
+def tasks():
+    update_ready_activities()
+
+sched.start()
 
 urlpatterns = [
     # home page

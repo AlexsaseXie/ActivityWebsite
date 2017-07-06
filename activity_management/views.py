@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from django.contrib.auth.models import User
+import datetime
 
 from .forms import ActivityForm,DateForm,MessageForm,ActivitySearchForm
 
@@ -332,3 +334,50 @@ def multi_apply_submit(request):
         form = ActivityForm()
         messages.info(request, '已成功导入 %d 个活动' % len(line_list))
         return render(request, 'apply_activity.html', {'form': form, 'privilege': privilege})
+
+remind_list = []
+
+def update_ready_activities():
+    ready_list = Activity.find_ready_activity_in_date_state(Activity(), timezone.now().date())
+
+    pre_time = timezone.now()
+    for act in ready_list:
+        if act.start_time <= pre_time:
+            Activity.update_activity_state(Activity(), act.id, 6)
+
+            # count
+            if act.state == 1:
+                continue
+
+            user_profile = UserProfile.find_user_by_id(UserProfile(), act.user_id.id)[1]
+            user_profile.admitted_activity_count += 1
+            user_profile.save()
+            join_list = Join.find_all_join_users(Join(), act.id)
+            for join in join_list:
+                profile = UserProfile.find_user_by_id(UserProfile(), join.user_id.id)[1]
+                profile.joined_activity_count += 1
+                profile.save()
+
+        else:
+            # msg remind
+            if act.state == 1:
+                continue
+
+            query = 'SELECT * FROM auth_user WHERE is_superuser = 1'
+            user = User.objects.raw(query)
+
+            if not act.user_id.id in remind_list:
+                interval = act.start_time - pre_time
+                if interval.seconds > 3 * 3600:
+                    continue
+
+                join_list = Join.find_all_join_users(Join(), act.id)
+                for join in join_list:
+                    Msg.create_msg(Msg(),
+                                   user[0],
+                                   join.user_id.id,
+                                   '活动提醒',
+                                   '你报名参加的活动 \"%s\" 还有 %d 小时 %d 分就要开始啦，记得准时参加。' \
+                                   % (act.name, interval.seconds / 3600, (interval.seconds % 3600) / 60))
+
+                remind_list.append(act.user_id.id)
