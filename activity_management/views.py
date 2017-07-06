@@ -218,6 +218,33 @@ def unread_message(request):
     msgs = Msg.find_all_msgs(Msg(), request.user.id).order_by('posted_at')
     return render(request, 'unread_message.html',{'msgs' : msgs})
 
+@login_required
+def delete_message(request,msg_id):
+    Msg.remove_msg(Msg(), msg_id)
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
+    return render(request, 'unread_message.html',{'msgs' : msgs})
+
+@login_required
+def delete_all_messages(request):
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
+    for msg in msgs:
+        Msg.remove_msg(Msg(), msg.id)
+    msgs = []
+    return render(request, 'unread_message.html', {'msgs': msgs})
+
+@login_required
+def set_read(request,msg_id):
+    Msg.set_msg_read(Msg(), msg_id)
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
+    return render(request, 'unread_message.html', {'msgs': msgs})
+
+@login_required
+def set_all_read(request):
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
+    for msg in msgs:
+        Msg.set_msg_read(Msg(), msg.id)
+    msgs = Msg.find_all_msgs(Msg(), request.user.id)
+    return render(request, 'unread_message.html', {'msgs': msgs})
 
 def multi_apply_submit(request):
     privilege = UserProfile.find_user_privilege(UserProfile(), request.user.id)

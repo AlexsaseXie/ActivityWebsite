@@ -58,4 +58,8 @@ urlpatterns = [
     #msg
     url(r'send_message$',views.send_message,name = 'send_message'),
     url(r'unread_message$',views.unread_message,name = 'unread_message'),
+    url(r'delete_message/([1-9][0-9]*)$',views.delete_message,name = 'delete_message'),
+    url(r'delete_all_messages$',views.delete_all_messages,name = 'delete_all_messages'),
+    url(r'set_read/([1-9][0-9]*)$',views.set_read,name = 'set_read'),
+    url(r'set_all_read$',views.set_all_read,name = 'set_all_read'),
 ]
