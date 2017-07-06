@@ -16,7 +16,13 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 
+def i18n_javascript(request):
+    return admin.site.i18n_javascript(request)
+
 urlpatterns = [
+    url(r'^admin/jsi18n', i18n_javascript),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^', include('activity_management.urls')),
+
 ]

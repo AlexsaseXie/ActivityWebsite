@@ -1,17 +1,20 @@
 from django import forms
 from .models import UserProfile, Activity, Join, Msg
+from django.contrib.admin import widgets
 
 class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
+        widgets = {'start_time':widgets.AdminSplitDateTime,'end_time':widgets.AdminSplitDateTime}
         fields = ('name', 'type','description','capacity','start_time','end_time','place')
 
+
 class DateForm(forms.Form):
-    date = forms.DateField(label = 'date')
+    date = forms.DateField(label = 'date',widget=widgets.AdminDateWidget())
 
 
 class ActivitySearchForm(forms.Form):
-    search_date = forms.DateField(label='日期',required= False)
+    search_date = forms.DateField(label='日期',required= False,widget= widgets.AdminDateWidget())
     name = forms.CharField(label='名称',required= False)
     type = forms.CharField(label='类型',required= False)
     place = forms.CharField(label='地点',required= False)

@@ -16,6 +16,8 @@ def tasks():
 
 sched.start()
 
+
+
 urlpatterns = [
     # home page
     url(r'^$', views.home_page, name='home'),

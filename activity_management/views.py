@@ -21,6 +21,8 @@ def static_vars(**kwargs):
     return decorate
 
 
+
+
 @static_vars(counter = 0,lastform = 0,lastactivities = 0)
 def home_page(request):
     if request.method == 'POST':
