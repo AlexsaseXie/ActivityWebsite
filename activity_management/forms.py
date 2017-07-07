@@ -7,11 +7,8 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ('name', 'type','description','capacity','start_time','end_time','place')
-
-    #def __init__(self, *args, **kwargs):
-    #   super(ActivityForm, self).__init__(*args, **kwargs)
-    #   self.fields['start_time'].widget = widgets.AdminSplitDateTime()
-    #   self.fields['end_time'].widget = widgets.AdminSplitDateTime()
+        widgets = {'start_time':widgets.AdminSplitDateTime(),'end_time':widgets.AdminSplitDateTime(),}
+        field_classes = {'start_time':forms.SplitDateTimeField,'end_time':forms.SplitDateTimeField,}
 
 class DateForm(forms.Form):
     date = forms.DateField(label = 'date',widget=widgets.AdminDateWidget())

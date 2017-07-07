@@ -58,21 +58,29 @@ def show_activity(request,activity_id):
 def apply_activity(request):
     privilege = UserProfile.find_user_privilege(UserProfile(),request.user.id)
 
-    params = request.POST if request.method == 'POST' else None
-    form = ActivityForm(params)
-    if form.is_valid():
-        post = form.save(commit=False)
-        post.state = 1
-        post.user_id_id = request.user.id
-        post.priority = 0
-        post.want_to_join_count = 1
-        post.created_at = timezone.now()
-        post.save()
+    if request.method == 'POST':
+        form = ActivityForm(request.POST)
 
-        print(post.id)
-        Join.create_join(Join(),user_id= request.user,activity_id = post,start_time= post.start_time,end_time= post.end_time,state = 0)
-        messages.info(request, '活动《{}》创建成功'.format(post.name))
+        if form.is_valid():
+            post = form.save(commit=False)
+
+            post.state = 1
+            post.user_id_id = request.user.id
+            post.priority = 0
+            post.want_to_join_count = 1
+            post.created_at = timezone.now()
+            post.save()
+
+            print(post.id)
+            Join.create_join(Join(), user_id=request.user, activity_id=post, start_time=post.start_time,
+                             end_time=post.end_time, state=0)
+            messages.info(request, '活动《{}》创建成功'.format(post.name))
+            form = ActivityForm()
+    else:
         form = ActivityForm()
+    #params = request.POST if request.method == 'POST' else None
+    #form = ActivityForm(params)
+
 
     return render(request, 'apply_activity.html', {'form': form, 'privilege': privilege})
 
