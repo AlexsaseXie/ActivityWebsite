@@ -6,7 +6,7 @@ from . import admin_views
 from . import activity_views
 from . import msg_views
 from apscheduler.scheduler import Scheduler
-from activity_management.views import update_ready_activities
+from activity_management.views import update_ready_activities,email_remind
 
 
 sched = Scheduler()
@@ -15,6 +15,10 @@ sched = Scheduler()
 @sched.interval_schedule(seconds=300)
 def tasks():
     update_ready_activities()
+
+@sched.cron_schedule(hour=22, minute=12)
+def email_examine():
+    email_remind()
 
 sched.start()
 
