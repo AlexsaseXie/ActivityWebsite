@@ -25,7 +25,7 @@ SECRET_KEY = 'cj0=yy90%pjo=gjc2c%)^qkr)-$a!qcf$d_uog9c_!42+72-*%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*','localhost', '127.0.0.1']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'activity_management',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'x1997x',
     }
 }
 

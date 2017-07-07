@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4d9534f-824c-4825-b664-eb6d86700225" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ActivityWebsite.iml" afterPath="$PROJECT_DIR$/.idea/ActivityWebsite.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ActivityWebsite/settings.py" afterPath="$PROJECT_DIR$/ActivityWebsite/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activity_management/models.py" afterPath="$PROJECT_DIR$/activity_management/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activity_management/templates/unread_message.html" afterPath="$PROJECT_DIR$/activity_management/templates/unread_message.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activity_management/templates/user_info.html" afterPath="$PROJECT_DIR$/activity_management/templates/user_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activity_management/urls.py" afterPath="$PROJECT_DIR$/activity_management/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activity_management/views.py" afterPath="$PROJECT_DIR$/activity_management/views.py" />
-    </list>
+    <list default="true" id="c4d9534f-824c-4825-b664-eb6d86700225" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,59 +15,46 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="unread_message.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/unread_message.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/activity_management/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="313" column="0" lean-forward="true" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
+            <state relative-caret-position="365">
+              <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
               <folding>
-                <marker date="1499414636395" expanded="true" signature="15901:15947" ph="SELECT * FRO... auth_user" />
+                <marker date="1499411788065" expanded="true" signature="846:2548" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="887:1074" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="897:1064" ph="{% if user.is_authenticated ... %}" />
+                <marker date="1499411788065" expanded="true" signature="963:1043" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1116:2541" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1126:2532" ph="{% if user.is_authenticated ... %}" />
+                <marker date="1499411788065" expanded="true" signature="1192:1280" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1317:1412" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1449:1553" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1590:1670" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1707:1796" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1833:1911" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="1948:2026" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2063:2143" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2180:2277" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2333:2403" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2440:2511" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2555:2922" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2583:2914" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2621:2636" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2748:2813" ph="..." />
+                <marker date="1499411788065" expanded="true" signature="2762:2795" ph="{% block content ... %}" />
+                <marker date="1499411788065" expanded="true" signature="2845:2903" ph="..." />
+                <marker date="1499411788065" expanded="false" signature="2862:2868" ph="©" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/models.py">
+      <file leaf-file-name="user_views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/user_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-                <marker date="1499414636442" expanded="true" signature="924:1068" ph="..." />
-                <marker date="1499414636442" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
-                <marker date="1499414636442" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
-                <marker date="1499414636442" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="11769:11985" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="12204:12417" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="12677:12842" ph="SELECT * FRO... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="13324:13477" ph="SELECT *,TIM... activity_management_activity" />
-                <marker date="1499414636442" expanded="true" signature="13624:13763" ph="SELECT *,TIM... activity_management_activity" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin_user_info.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/admin_user_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-536">
-              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,38 +63,8 @@
       <file leaf-file-name="apply_activity.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_info.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/user_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="81" column="1" lean-forward="true" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sign_up.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/sign_up.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+            <state relative-caret-position="736">
+              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -133,12 +80,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_user_joined_activities.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/activity_management/templates/show_user_joined_activities.html">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ActivityWebsite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="343">
+              <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ActivityWebsite/wsgi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="e#232#241#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="387" column="16" lean-forward="false" selection-start-line="387" selection-start-column="16" selection-end-line="387" selection-end-column="16" />
+              <folding>
+                <marker date="1499417704642" expanded="true" signature="17302:17348" ph="SELECT * FRO... auth_user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_search_activities.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/show_search_activities.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity_management/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+                <marker date="1499417492807" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
+                <marker date="1499417492807" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
+                <marker date="1499417492807" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="11769:11985" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="12204:12417" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="12677:12842" ph="SELECT * FRO... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="13324:13477" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="13624:13763" ph="SELECT *,TIM... activity_management_activity" />
+                <marker date="1499417492807" expanded="true" signature="15933:17132" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,15 +216,15 @@
         <option value="$PROJECT_DIR$/activity_management/templates/show_user_applied_activities.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/show_user_joined_activities.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/admin_home.html" />
-        <option value="$PROJECT_DIR$/activity_management/templates/apply_activity.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/admin_base.html" />
         <option value="$PROJECT_DIR$/activity_management/templates/base.html" />
-        <option value="$PROJECT_DIR$/ActivityWebsite/settings.py" />
         <option value="$PROJECT_DIR$/activity_management/templates/unread_message.html" />
         <option value="$PROJECT_DIR$/activity_management/urls.py" />
         <option value="$PROJECT_DIR$/activity_management/templates/user_info.html" />
         <option value="$PROJECT_DIR$/activity_management/models.py" />
         <option value="$PROJECT_DIR$/activity_management/views.py" />
+        <option value="$PROJECT_DIR$/activity_management/templates/apply_activity.html" />
+        <option value="$PROJECT_DIR$/ActivityWebsite/settings.py" />
       </list>
     </option>
   </component>
@@ -218,9 +236,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1929" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -237,8 +254,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,6 +278,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="uploadfiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ActivityWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ActivityWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ActivityWebsite" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -276,46 +307,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activity_management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActivityWebsite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActivityWebsite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity_management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActivityWebsite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ActivityWebsite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity_management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -560,27 +551,40 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="0" width="1929" height="1038" extended-state="0" />
+    <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25327054" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26703754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25866497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26748058" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26703754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25866497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,6 +667,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -767,6 +772,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#232#241#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -859,33 +867,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/show_search_activities.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        <state relative-caret-position="207">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        <state relative-caret-position="230">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ActivityWebsite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="365">
+          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding>
+            <marker date="1499411788065" expanded="true" signature="846:2548" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="887:1074" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="897:1064" ph="{% if user.is_authenticated ... %}" />
+            <marker date="1499411788065" expanded="true" signature="963:1043" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1116:2541" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1126:2532" ph="{% if user.is_authenticated ... %}" />
+            <marker date="1499411788065" expanded="true" signature="1192:1280" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1317:1412" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1449:1553" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1590:1670" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1707:1796" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1833:1911" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="1948:2026" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2063:2143" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2180:2277" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2333:2403" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2440:2511" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2555:2922" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2583:2914" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2621:2636" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2748:2813" ph="..." />
+            <marker date="1499411788065" expanded="true" signature="2762:2795" ph="{% block content ... %}" />
+            <marker date="1499411788065" expanded="true" signature="2845:2903" ph="..." />
+            <marker date="1499411788065" expanded="false" signature="2862:2868" ph="©" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -923,14 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -957,24 +974,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        <state relative-caret-position="209">
+          <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1499414636442" expanded="true" signature="924:1068" ph="..." />
-            <marker date="1499414636442" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499414636442" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
-            <marker date="1499414636442" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="11769:11985" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="12204:12417" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="12677:12842" ph="SELECT * FRO... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="13324:13477" ph="SELECT *,TIM... activity_management_activity" />
-            <marker date="1499414636442" expanded="true" signature="13624:13763" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="4357:4475" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="4693:4821" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499417492807" expanded="true" signature="5491:5656" ph="SELECT * FRO... activity_management_join" />
+            <marker date="1499417492807" expanded="true" signature="9243:9371" ph="SELECT TIMES... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="9559:9748" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="9994:10076" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="10932:11150" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="11351:11563" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="11351:11574" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="11769:11985" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="12204:12417" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="12677:12842" ph="SELECT * FRO... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="13324:13477" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="13624:13763" ph="SELECT *,TIM... activity_management_activity" />
+            <marker date="1499417492807" expanded="true" signature="15933:17132" ph="..." />
           </folding>
         </state>
       </provider>
@@ -989,11 +1007,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/activity_management/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="313" column="0" lean-forward="true" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
+        <state relative-caret-position="286">
+          <caret line="387" column="16" lean-forward="false" selection-start-line="387" selection-start-column="16" selection-end-line="387" selection-end-column="16" />
           <folding>
-            <marker date="1499414636395" expanded="true" signature="15901:15947" ph="SELECT * FRO... auth_user" />
+            <marker date="1499417704642" expanded="true" signature="17302:17348" ph="SELECT * FRO... auth_user" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity_management/templates/apply_activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ActivityWebsite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
