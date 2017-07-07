@@ -6,6 +6,7 @@
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 {% bootstrap_form form %}
+                {{ form.media }}
                 {% buttons submit='查看该日期的活动' %}{% endbuttons %}
         </form>
     <h4>您{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' user.id %}"><b>{{ user.username}}</b></a>参与的活动有：</h4>

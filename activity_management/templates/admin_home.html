@@ -6,6 +6,7 @@
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 {% bootstrap_form form %}
+                {{ form.media }}
                 <input type = "submit" name = "search" value="查看该日期的活动">
                 <input type = "submit" name = "arrange" value="安排该日期的活动">
             </form>

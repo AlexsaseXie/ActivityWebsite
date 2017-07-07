@@ -9,6 +9,7 @@
         {% csrf_token %}
         {% bootstrap_form_errors form %}
         {% bootstrap_form form %}
+        {{ form.media }}
         {% buttons submit='提交' %}{% endbuttons %}
     </form>
     <form method="post" action="{% url 'home' %}">
