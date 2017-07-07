@@ -67,14 +67,21 @@ def apply_activity(request):
             post.state = 1
             post.user_id_id = request.user.id
             post.priority = 0
-            post.want_to_join_count = 1
+            post.want_to_join_count = 0
             post.created_at = timezone.now()
             post.save()
+            messages.info(request, '活动《{}》创建成功'.format(post.name))
 
             print(post.id)
-            Join.create_join(Join(), user_id=request.user, activity_id=post, start_time=post.start_time,
+            if UserProfile.check_user_can_join_activity(UserProfile(),request.user.id,post.id):
+                messages.info(request, '您已自动加入自己创建的活动《{}》'.format(post.name))
+                Join.create_join(Join(), user_id=request.user, activity_id=post, start_time=post.start_time,
                              end_time=post.end_time, state=0)
-            messages.info(request, '活动《{}》创建成功'.format(post.name))
+                post.want_to_join_count = 1
+                post.save()
+            else:
+                messages.info(request, '由于时间冲突，您未能加入自己创建的活动《{}》'.format(post.name))
+
             form = ActivityForm()
     else:
         form = ActivityForm()
