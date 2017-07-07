@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.contrib.auth.models import User
+import xlrd
 import datetime
 
 from .forms import ActivityForm,DateForm,MessageForm,ActivitySearchForm
@@ -318,6 +319,7 @@ def set_all_read(request):
     msgs = Msg.find_all_msgs(Msg(), request.user.id)
     return render(request, 'unread_message.html', {'msgs': msgs})
 
+'''
 def multi_apply_submit(request):
     privilege = UserProfile.find_user_privilege(UserProfile(), request.user.id)
     file = request.FILES.get('file')
@@ -328,7 +330,7 @@ def multi_apply_submit(request):
     if not suffix == 'txt':
         return HttpResponse('Require refused: incorrect file type.')
 
-    save_path = '../ActivityWebsite-master/uploadfiles/' + file.name[:-4] + '_'\
+    save_path = '../ActivityWebsite/uploadfiles/' + file.name[:-4] + '_'\
                 + timezone.now().date().__str__() + '_'\
                 + timezone.now().time().hour.__str__() + '_'\
                 + timezone.now().time().minute.__str__() + '_'\
@@ -353,6 +355,79 @@ def multi_apply_submit(request):
         form = ActivityForm()
         messages.info(request, '已成功导入 %d 个活动' % len(line_list))
         return render(request, 'apply_activity.html', {'form': form, 'privilege': privilege})
+'''
+
+def multi_apply_submit(request):
+    privilege = UserProfile.find_user_privilege(UserProfile(), request.user.id)
+    file = request.FILES.get('file')
+    suffix = file.name.split('.')[-1]
+    if not (suffix == 'txt' or 'xls'):
+        return HttpResponse('Require refused: incorrect file type.')
+    save_path = '../ActivityWebsite/uploadfiles/' + file.name[:-4] + '_' \
+                + timezone.now().date().__str__() + '_' \
+                + timezone.now().time().hour.__str__() + '_' \
+                + timezone.now().time().minute.__str__() + '_' \
+                + timezone.now().time().second.__str__() \
+                + '.' + suffix
+    path = default_storage.save(save_path, ContentFile(file.read()))
+    act_num = load_activities_from_file(request.user, path)
+    form = ActivityForm()
+    if act_num == 0:
+        messages.warning(request, '没有导入活动')
+    else:
+        messages.info(request, '已成功导入 %d 个活动' % act_num)
+    return render(request, 'apply_activity.html', {'form': form, 'privilege': privilege})
+
+def load_activities_from_file(user, file_path):
+    suffix = file_path.split('.')[-1]
+    valid_number = 0
+    if suffix == 'txt':
+        with open(file_path, 'r') as f:
+            line_list = f.readlines()
+            if not line_list:
+                return 0
+            for line in line_list:
+                act_info = line.split('#')
+                if not len(act_info) == 7:
+                    continue
+                act = Activity.create_activity(Activity(), user, act_info[0], act_info[1], act_info[2], act_info[3],
+                                         act_info[4], act_info[5], act_info[6], 0, timezone.now())
+
+                if UserProfile.check_user_can_join_activity(UserProfile(),user.id,act.id):
+                    act.want_to_join_count = 1
+                    act.save()
+                    Join.create_join(Join(), user_id=user, activity_id=act, start_time=act.start_time,
+                                     end_time=act.end_time, state=0)
+
+
+                valid_number += 1
+            return valid_number
+    elif suffix == 'xls':
+        with xlrd.open_workbook(file_path) as f:
+            sheet = f.sheet_by_index(0)
+            if not sheet:
+                return 0
+            nrow = sheet.nrows
+            ncol = sheet.ncols
+            row_list = []
+            for i in range(nrow):
+                row_list.append(sheet.row_values(i))
+            for act_info in row_list:
+                if not len(act_info) == 7:
+                    continue
+                act = Activity.create_activity(Activity(), user, act_info[0], act_info[1], act_info[2], act_info[3],
+                                         act_info[4], act_info[5], act_info[6], 0, timezone.now())
+
+                if UserProfile.check_user_can_join_activity(UserProfile(),user.id,act.id):
+                    act.want_to_join_count = 1
+                    act.save()
+                    Join.create_join(Join(), user_id=user, activity_id=act, start_time=act.start_time,
+                                     end_time=act.end_time, state=0)
+
+                valid_number += 1
+            return valid_number
+    else:
+        return 0
 
 remind_list = []
 
