@@ -59,6 +59,15 @@ def ban_activity(request,activity_id):
     activity = Activity.find_activity(Activity(), activity_id)
     Msg.create_msg(Msg(), request.user, activity.user_id.id, title='【系统】您的活动' + activity.name + '涉嫌违规，已被管理员禁用',
                    content='您的活动' + activity.name + '涉嫌违规，已被管理员禁用。')
+
+    send_messages_for_creator_participates(request.user,activity_id,state= 3 )
+
+    # 取消当前的报名
+    joins = Join.find_all_join_users(Join(), activity.id, state=0)
+    for join in joins:
+        join.delete()
+    activity.want_to_join_count = 0
+    activity.save()
     return redirect('admin_home')
 
 
@@ -90,8 +99,13 @@ def arrange_activity_for_date(user,date):
                 currentEndTime[act.place] = act.end_time
             else:
                 act.state = 4
-                act.save()
                 send_messages_for_creator_participates(user, act.id, state=4)
+                # 取消当前的报名
+                joins = Join.find_all_join_users(Join(), act.id, state=0)
+                for join in joins:
+                    join.delete()
+                act.want_to_join_count = 0
+                act.save()
     return
 
 #按优先级安排活动
@@ -105,15 +119,20 @@ def arrange_activity_for_date_by_priority(user,date):
             send_messages_for_creator_participates(user,act.id,state = 5)
         else:
             act.state = 4
-            act.save()
             send_messages_for_creator_participates(user, act.id, state=4)
+            # 取消当前的报名
+            joins = Join.find_all_join_users(Join(), act.id, state=0)
+            for join in joins:
+                join.delete()
+            act.want_to_join_count = 0
+            act.save()
     return
 
 #给相关者发送信息
 def send_messages_for_creator_participates(user,activity_id,state):
     joins = Join.find_all_join_users(Join(),activity_id)
     for join in joins:
-        if state == 4:
+        if state == 4 or state == 3:
             if join.user_id != join.activity_id.user_id :
                 Msg.create_msg(Msg(), user, join.user_id.id, title='【系统】管理员取消了您参与的活动' + join.activity_id.name ,
                        content='管理员取消了您参与的活动' + join.activity_id.name + '。具体情况请查看该活动的活动信息。')
