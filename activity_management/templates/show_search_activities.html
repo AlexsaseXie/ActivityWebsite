@@ -1,28 +1,29 @@
-{% extends 'admin_base.html' %}
+{% extends 'base.html' %}
+
 {% load bootstrap3 %}
 {% block content %}
     {% include 'messages.html' %}
-            <form method="post" action="">
+            <form method="post" action="{% url 'show_search_activities'%}">
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 {% bootstrap_form form %}
                 {{ form.media }}
-                <input type = "submit" name = "search" value="查看该日期的活动">
-                <input type = "submit" name = "arrange" value="安排该日期的活动">
-            </form>
+                {% buttons submit='查找这样的活动' %}{% endbuttons %}
+        </form>
+    <h4>这样的活动有：</h4>
 <table>
     <tbody class="table">
         {% for act in activities %}
-        <table>
+        <tr>
             <td>
-                <h3><a href="{% url 'admin_show_activity' act.id %}">{{act.name}}</a></h3>
+                <h3><a href="{% url 'show_activity' act.id %}">{{act.name}}</a></h3>
                 <div class="pull-right">
-                    <h4>{% bootstrap_icon 'user' %}<a href="{% url 'admin_user_info' act.user_id.id %}"><b>{{act.user_id}}</b></a>
+                    <h4>{% bootstrap_icon 'user' %}<a href="{% url 'show_user_info' act.user_id.id %}"><b>{{act.user_id}}</b></a>
                         类别{% bootstrap_icon 'th-large' %}{{act.type }}
                         地点{% bootstrap_icon 'home' %} {{act.place }}</h4>
                     <h4>
                         开始时间{% bootstrap_icon 'time' %}{{act.start_time}}
-                        时长{% bootstrap_icon 'time' %}{{act.time_length}}min</h4>
+                        结束时间{% bootstrap_icon 'time' %}{{act.end_time}}</h4>
                     <h4>
                         <b>状态：</b>{% bootstrap_icon 'flag' %}
                         {% if act.state == 0  %} 挂起中 {% endif %}
@@ -35,22 +36,13 @@
                     </h4>
                 </div>
             </td>
-            <td>
-                {% if act.state == 1 %}
-                        <form method="post" action="{% url 'ban_activity' act.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary">禁用该活动</button>
-                        </form>
-                {% elif act.state == 3 %}
-                        <form method="post" action="{% url 'lift_activity' act.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary">解禁该活动</button>
-                        </form>
-                {% endif %}
-            </td>
-        </table>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
 
 {% endblock %}

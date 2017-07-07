@@ -66,10 +66,12 @@
         <button type="submit" class="btn btn-primary">返回</button>
     </form>
     {% if activity.user_id_id == user.id %}
-           <form method="post" action="{% url 'change_activity_info' activity.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">修改活动信息</button>
-           </form>
+            {% if activity.state == 1 or activity.state == 2 %}
+                <form method="post" action="{% url 'change_activity_info' activity.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">修改活动信息</button>
+                </form>
+            {% endif %}
             {% if activity.state == 1 or activity.state == 5 %}
                 <form method="post" action="{% url 'cancel_activity' activity.id %}">
                     {% csrf_token %}

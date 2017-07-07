@@ -1,32 +1,95 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+{% load pagination_tags %}
 {% block content %}
     {% include 'messages.html' %}
     <table>
         <tbody class="table" align="left">
+            <tr>
+                <td>
+                    <div>
+                        <form method="post" action="{% url 'delete_all_messages' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">一键删除</button>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <form method="post" action="{% url 'set_all_read' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">一键标为已读</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% autopaginate msgs 5 %}
             {% for msg in msgs %}
-                <tr>
-                    <td>
-                        <div class="pull-left">
-                            <h3>标题：{% bootstrap_icon 'title' %}<b>{{msg.title}}</b></h3>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <h4>用户名：{% bootstrap_icon 'user' %}<b>{{msg.from_user_id}}</b></h4>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <h4>内容：{% bootstrap_icon 'content' %}<b>{{msg.content}}</b></h4>
-                        </div>
-                    </td>
-                </tr>
+                <div>
+                    <tr>
+                        <td>
+                            <div class="pull-left">
+                                <h3>标题：{% bootstrap_icon 'title' %}<b>{{msg.title}}</b></h3>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <h4>用户名：{% bootstrap_icon 'user' %}<b>{{msg.from_user_id}}</b></h4>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <h4>内容：{% bootstrap_icon 'content' %}<b>{{msg.content}}</b></h4>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if msg.state == 0  %}<h4>状态：未读</h4>{% endif %}
+                            {% if msg.state == 1  %}<h4>状态：已读</h4>{% endif %}
+                        </td>
+                    </tr>
+
+                        <td>
+                            <div>
+                                <form method="post" action="{% url 'delete_message' msg.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">删除</button>
+                                </form>
+                            </div>
+                        </td>
+
+                        {% if msg.state == 0  %}
+                            <td>
+                                <div>
+                                    <form method="post" action="{% url 'set_read' msg.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">标为已读</button>
+                                    </form>
+                                </div>
+                            </td>
+                        {% endif %}
+
+                        <td>
+                            <div>
+                                <form method="post" action="{% url 'reply_message' msg.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">回复</button>
+                                </form>
+                            </div>
+                        </td>
+
+                </div>
             {% endfor %}
+            {% paginate %}
         </tbody>
     </table>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
 {% endblock %}

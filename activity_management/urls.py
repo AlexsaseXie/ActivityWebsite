@@ -3,6 +3,20 @@ from . import views
 from . import auth_views
 from . import user_views
 from . import admin_views
+from apscheduler.scheduler import Scheduler
+from activity_management.views import update_ready_activities
+
+
+sched = Scheduler()
+
+
+@sched.interval_schedule(seconds=300)
+def tasks():
+    update_ready_activities()
+
+sched.start()
+
+
 
 urlpatterns = [
     # home page
@@ -39,6 +53,8 @@ urlpatterns = [
     url(r'cancel_activity/([1-9][0-9]*)$',views.cancel_activity,name = 'cancel_activity'),
     url(r'resume_activity/([1-9][0-9]*)$',views.resume_activity,name = 'resume_activity'),
     #url(r'user_info$', user_views.user_info, name='user_info'),
+    url(r'^multi_apply_submit$', views.multi_apply_submit, name='multi_apply_submit'),
+    url(r'show_search_activities$', views.show_search_activities, name='show_search_activities'),
 
     url(r'show_user_applied_activities/([1-9][0-9]*)$',views.show_user_applied_activities,name = 'show_user_applied_activities'),
     url(r'show_user_joined_activities$',views.show_user_joined_activities,name = 'show_user_joined_activities'),
@@ -47,12 +63,20 @@ urlpatterns = [
     url(r'admin_home$', admin_views.admin_home, name='admin_home'),
     url(r'ban_activity/([1-9][0-9]*)$',admin_views.ban_activity,name = 'ban_activity'),
     url(r'lift_activity/([1-9][0-9]*)$',admin_views.lift_activity,name = 'lift_activity'),
+    url(r'^show_activity_info/admin/([1-9][0-9]*)$', admin_views.admin_show_activity, name='admin_show_activity'),
     url(r'^show_user_info/admin/([1-9][0-9]*)$', admin_views.admin_user_info, name='admin_user_info'),
     url(r'^upgrade_user/admin/([1-9][0-9]*)$', admin_views.upgrade_user, name='upgrade_user'),
     url(r'^degrade_user/admin/([1-9][0-9]*)$', admin_views.degrade_user, name='degrade_user'),
     url(r'^enter_admin$', admin_views.enter_admin, name='enter_admin'),
+    url(r'^raise_priority/admin/([1-9][0-9]*)$', admin_views.admin_raise_priority, name='admin_raise_priority'),
 
     #msg
     url(r'send_message$',views.send_message,name = 'send_message'),
     url(r'unread_message$',views.unread_message,name = 'unread_message'),
+    url(r'delete_message/([1-9][0-9]*)$',views.delete_message,name = 'delete_message'),
+    url(r'delete_all_messages$',views.delete_all_messages,name = 'delete_all_messages'),
+    url(r'set_read/([1-9][0-9]*)$',views.set_read,name = 'set_read'),
+    url(r'set_all_read$',views.set_all_read,name = 'set_all_read'),
+    url(r'reply_message/([1-9][0-9]*)$',views.reply_message,name = 'reply_message'),
+    url(r'send_to_Ta/([1-9][0-9]*)$',views.send_to_Ta,name = 'send_to_Ta'),
 ]

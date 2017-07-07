@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+
 {% block content %}
     {% include 'messages.html' %}
+
     <form method="post" action="{% url 'home' %}">
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 {% bootstrap_form form %}
+                {{ form.media }}
                 {% buttons submit='查看该日期的活动' %}{% endbuttons %}
     </form>
 <table>

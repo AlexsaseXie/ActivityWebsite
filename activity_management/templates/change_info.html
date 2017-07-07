@@ -28,4 +28,8 @@
         <button type="submit" class="btn btn-primary">确认修改</button>
     </form>
 </div>
+        <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">返回</button>
+    </form>
 {% endblock %}
