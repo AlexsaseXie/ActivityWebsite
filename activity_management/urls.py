@@ -77,4 +77,6 @@ urlpatterns = [
     url(r'delete_all_messages$',views.delete_all_messages,name = 'delete_all_messages'),
     url(r'set_read/([1-9][0-9]*)$',views.set_read,name = 'set_read'),
     url(r'set_all_read$',views.set_all_read,name = 'set_all_read'),
+    url(r'reply_message/([1-9][0-9]*)$',views.reply_message,name = 'reply_message'),
+    url(r'send_to_Ta/([1-9][0-9]*)$',views.send_to_Ta,name = 'send_to_Ta'),
 ]

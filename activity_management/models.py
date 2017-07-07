@@ -470,38 +470,10 @@ class Msg(models.Model):
         msgs = Msg.objects.filter(receive_user_id=user_id).order_by('state','-posted_at')
         return msgs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # 通过id找到某信息
+    def find_msg(self,msg_id):
+        try:
+            target = Msg.objects.get(id=msg_id)
+        except Msg.DoesNotExist:
+            return None
+        return target

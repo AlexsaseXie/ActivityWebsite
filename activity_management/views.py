@@ -270,19 +270,6 @@ def send_message(request):
             receive_user_id = UserProfile.get_user_id(UserProfile(), receive_user_name)
             Msg.create_msg(Msg(), request.user, receive_user_id, title, content)
     form = MessageForm()
-    '''
-    if form.is_valid():
-        post = form.save(commit=False)
-        post.from_user_id = request.user.id
-        post.receive_user_id = UserProfile.get_user_id(UserProfile(), request.POST.get('receive_user_name'))
-        post.save()
-        if (post.receive_user_id != -1):
-            messages.info(request, '消息已成功发送给用户“{}”'.format(request.POST.get('receive_user_name')))
-        else:
-            messages.info(request, '用户“{}”不存在'.format(request.POST.get('receive_user_name')))
-        form = MessageForm()
-        msg = Msg.create_msg(post.from_user_id,post.receive_user_id,request.POST.get('title'),request.POST.get('content'))
-    '''
     return render(request, 'send_message.html', {'form': form})
 
 @login_required
@@ -317,6 +304,19 @@ def set_all_read(request):
         Msg.set_msg_read(Msg(), msg.id)
     msgs = Msg.find_all_msgs(Msg(), request.user.id)
     return render(request, 'unread_message.html', {'msgs': msgs})
+
+@login_required
+def reply_message(request,msg_id):
+    msg = Msg.find_msg(Msg(), msg_id)
+    username = msg.from_user_id.username
+    form = MessageForm(initial={'receive_user_name' : username})
+    return render(request, 'send_message.html', {'form': form})
+
+@login_required
+def send_to_Ta(request,user_id):
+    username = UserProfile.find_user_by_id(UserProfile(),user_id)[0].username
+    form = MessageForm(initial={'receive_user_name' : username})
+    return render(request, 'send_message.html', {'form': form})
 
 def multi_apply_submit(request):
     privilege = UserProfile.find_user_privilege(UserProfile(), request.user.id)

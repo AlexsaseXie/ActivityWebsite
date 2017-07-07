@@ -74,6 +74,15 @@
                             </td>
                         {% endif %}
 
+                        <td>
+                            <div>
+                                <form method="post" action="{% url 'reply_message' msg.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">回复</button>
+                                </form>
+                            </div>
+                        </td>
+
                 </div>
             {% endfor %}
             {% paginate %}

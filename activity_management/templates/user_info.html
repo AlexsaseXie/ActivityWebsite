@@ -29,7 +29,7 @@
                 成功举办的活动数目：{{ user_profile.admitted_activity_count}}
                 <form method="post" action="{% url 'show_user_applied_activities' user_profile.user.id %}">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">查看他举办的活动</button>
+                    <button type="submit" class="btn btn-primary">查看Ta举办的活动</button>
                 </form>
             </div>
             <hr>
@@ -45,8 +45,14 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary">修改</button>
                 </form>
+            {% else %}
+                <form method="post" action="{% url 'send_to_Ta' user_profile.user.id%}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">给Ta发消息</button>
+                </form>
             {% endif %}
         {% endif %}
+
     <form method="post" action="{% url 'home' %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">返回</button>
