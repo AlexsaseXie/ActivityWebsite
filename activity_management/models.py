@@ -13,6 +13,7 @@ class UserProfile(models.Model):
     admitted_activity_count = models.IntegerField()
     joined_activity_count = models.IntegerField()
     real_name = models.CharField(max_length = 100,default = '')
+    image = models.ImageField(upload_to="image/%Y/%m", default=u"image/default.png")
 
     def __str__(self):
         return '%s (%s)' % (self.user.username, self.real_name)
