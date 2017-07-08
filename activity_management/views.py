@@ -221,7 +221,3 @@ def upload_image(request):
         return redirect('show_user_info',request.user.id)
 
     return redirect('show_user_info',request.user.id)
-
-
-
-

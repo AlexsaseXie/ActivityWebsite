@@ -68,7 +68,7 @@ class UserProfile(models.Model):
             target = User.objects.get(id=user_id)
         except User.DoesNotExist:
             return None
-        targetProfile = UserProfile.objects.get(user_id = user_id)
+        targetProfile = UserProfile.objects.get(user_id=user_id)
         return [target, targetProfile]
 
     # 更新用户信息
@@ -285,13 +285,15 @@ class Activity(models.Model):
         for act in all_activities:
             flag = True
             if search_name:
-                if act.name != search_name:
+                #if act.name != search_name:
+                if act.name.lower().find(search_name.lower()) == -1:
                     flag = False
             if search_type:
                 if act.type != search_type:
                     flag = False
             if search_place:
-                if act.place != search_place:
+                # if act.place != search_place:
+                if act.place.lower().find(search_place.lower()) == -1:
                     flag = False
             if search_state:
                 if act.state != search_state:
