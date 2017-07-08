@@ -138,12 +138,11 @@ def change_activity_info(request,activity_id):
             form.save()
             messages.info(request, '活动《{}》修改成功'.format(activity.name))
 
-    joins = Join.find_all_join_users(Join(),activity_id,state = 0)
-    for join in joins:
-        #给报名的用户发消息
-        if request.user.id != join.user_id.id:
-            Msg.create_msg(Msg(),request.user,join.user_id.id,title= '【系统】请注意！我修改了活动'+ join.activity_id.name + '的信息' ,content= '请注意！我修改了活动'+join.activity_id.name+'的信息。请提前做好准备！')
-        join.delete()
+            joins = Join.find_all_join_users(Join(),activity_id,state = 0)
+            for join in joins:
+                #给报名的用户发消息
+                if request.user.id != join.user_id.id:
+                    Msg.create_msg(Msg(),request.user,join.user_id.id,title= '【系统】请注意！我修改了活动'+ join.activity_id.name + '的信息' ,content= '请注意！我修改了活动'+join.activity_id.name+'的信息。请提前做好准备！')
 
     form = ActivityForm(instance=activity)
     return render(request, 'change_activity_info.html', {'form': form, 'activity': activity})
