@@ -2,8 +2,23 @@
 
 {% extends 'base.html' %}
 {% load bootstrap3 %}
-{% block content%}
 
+{% block content%}
+    {% include 'messages.html' %}
+        <hr>
+        <div class="panel-body word-wrap">
+            头像：<img height = 100 width = 100 src="{{ user_profile.image.url }}">
+        </div>
+        {% if user.id == user_obj.id %}
+        <form method="post" action="{% url 'upload_image'%}" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="file">请上传文件</label>
+                <input type="file" id="file" name="images" class="form-control"  required/>
+            </div>
+            <button type="submit" class="btn btn-primary" >修改</button>
+        </form>
+        {% endif %}
         <hr>
         <div class="panel-body word-wrap">
             用户：{{ user_obj.username }}

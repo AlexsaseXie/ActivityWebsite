@@ -50,7 +50,10 @@ def log_in_submit(request):
     user = auth.authenticate(request, username=user_name, password=password)
     if not user:
         # return redirect('log_in')
-        return HttpResponse('Require refused: Incorrect username or password.')
+        # return HttpResponse('Require refused: Incorrect username or password.')
+        # messages.warning(request, '用户名或密码错误。')
+        #return render(request, 'log_in.html')
+        return redirect('log_in')
 
     auth.login(request, user)
     privilege = UserProfile.find_user_privilege(UserProfile(),request.user.id)

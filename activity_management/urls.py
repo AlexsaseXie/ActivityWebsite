@@ -6,7 +6,7 @@ from . import admin_views
 from . import activity_views
 from . import msg_views
 from apscheduler.scheduler import Scheduler
-from activity_management.views import update_ready_activities
+from activity_management.views import update_ready_activities,email_remind
 
 
 sched = Scheduler()
@@ -16,11 +16,18 @@ sched = Scheduler()
 def tasks():
     update_ready_activities()
 
+@sched.cron_schedule(hour=8, minute=1)
+def email_examine():
+    email_remind()
+
 sched.start()
 
 
 
 urlpatterns = [
+
+    # img
+    url(r'^upload_image$', views.upload_image, name='upload_image'),
     # home page
     url(r'^$', views.home_page, name='home'),
 

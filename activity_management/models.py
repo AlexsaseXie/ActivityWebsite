@@ -13,6 +13,7 @@ class UserProfile(models.Model):
     admitted_activity_count = models.IntegerField()
     joined_activity_count = models.IntegerField()
     real_name = models.CharField(max_length = 100,default = '')
+    image = models.ImageField(upload_to="image/%Y/%m", default=u"image/default.png")
 
     def __str__(self):
         return '%s (%s)' % (self.user.username, self.real_name)
@@ -284,13 +285,15 @@ class Activity(models.Model):
         for act in all_activities:
             flag = True
             if search_name:
-                if act.name != search_name:
+                #if act.name != search_name:
+                if act.name.lower().find(search_name.lower()) == -1:
                     flag = False
             if search_type:
                 if act.type != search_type:
                     flag = False
             if search_place:
-                if act.place != search_place:
+                # if act.place != search_place:
+                if act.place.lower().find(search_place.lower()) == -1:
                     flag = False
             if search_state:
                 if act.state != search_state:

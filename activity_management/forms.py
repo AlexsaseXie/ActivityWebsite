@@ -9,6 +9,7 @@ class ActivityForm(forms.ModelForm):
         fields = ('name', 'type','description','capacity','start_time','end_time','place')
         widgets = {'start_time':widgets.AdminSplitDateTime(),'end_time':widgets.AdminSplitDateTime(),}
         field_classes = {'start_time':forms.SplitDateTimeField,'end_time':forms.SplitDateTimeField,}
+        labels = {'name':'名称','type':'类型','description':'描述','capacity':'容量','start_time':'开始时间','end_time':'结束时间','place':'地点'}
 
 class DateForm(forms.Form):
     date = forms.DateField(label = 'date',widget=widgets.AdminDateWidget())

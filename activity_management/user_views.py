@@ -9,6 +9,7 @@ from .forms import ActivityForm
 
 
 def show_user_info(request,user_id):
+    
     user = UserProfile.find_user_by_id(UserProfile(), user_id)
     return render(request, 'user_info.html', {'user_obj': user[0], 'user_profile': user[1]})
 
