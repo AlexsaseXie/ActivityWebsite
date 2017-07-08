@@ -2,7 +2,9 @@
 
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+
 {% block content%}
+    {% include 'messages.html' %}
         <hr>
         <div class="panel-body word-wrap">
             头像：<img height = 100 width = 100 src="{{ user_profile.image.url }}">

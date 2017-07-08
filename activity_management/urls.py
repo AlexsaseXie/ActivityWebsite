@@ -16,7 +16,7 @@ sched = Scheduler()
 def tasks():
     update_ready_activities()
 
-@sched.cron_schedule(hour=0, minute=1)
+@sched.cron_schedule(hour=8, minute=1)
 def email_examine():
     email_remind()
 

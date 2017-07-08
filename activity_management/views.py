@@ -56,14 +56,16 @@ def multi_apply_submit(request):
     suffix = file.name.split('.')[-1]
     if not (suffix == 'txt' or 'xls'):
         return HttpResponse('Require refused: incorrect file type.')
-    save_path = '../ActivityWebsite/uploadfiles/' + file.name[:-4] + '_' \
+    save_path = '../media/uploadfiles/' + file.name[:-4] + '_' \
                 + timezone.now().date().__str__() + '_' \
                 + timezone.now().time().hour.__str__() + '_' \
                 + timezone.now().time().minute.__str__() + '_' \
                 + timezone.now().time().second.__str__() \
                 + '.' + suffix
     path = default_storage.save(save_path, ContentFile(file.read()))
-    act_num = load_activities_from_file(request.user, path)
+    new_path = save_path[1:]
+    print(path)
+    act_num = load_activities_from_file(request.user, new_path)
     form = ActivityForm()
     if act_num == 0:
         messages.warning(request, '没有导入活动')
@@ -212,12 +214,17 @@ def email_remind():
 @login_required
 def upload_image(request):
     image = request.FILES.get('images')
-    if image.size > 10000 and image.size < 20480000:
+    suffix = image.name.split('.')[-1]
+    if image.size > 10000 and image.size < 20480000 and (suffix == 'jpg'or 'png' or 'gif'):
         path = default_storage.save('../media/image/'+request.user.username+'/ '+image.name,ContentFile(image.read()))
         user_profile = UserProfile.find_user_by_id(UserProfile(),request.user.id)[1]
         user_profile.image = 'image/'+ request.user.username+'/ '+image.name
         user_profile.save()
         print(True)
+        messages.info(request, "修改头像成功！")
         return redirect('show_user_info',request.user.id)
+    else:
+        messages.info(request,"头像的格式有问题！")
+        return redirect('show_user_info', request.user.id)
 
     return redirect('show_user_info',request.user.id)
