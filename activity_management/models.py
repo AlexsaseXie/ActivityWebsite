@@ -68,7 +68,7 @@ class UserProfile(models.Model):
             target = User.objects.get(id=user_id)
         except User.DoesNotExist:
             return None
-        targetProfile = UserProfile.objects.get(user_id=user_id)
+        targetProfile = UserProfile.objects.get(user_id = user_id)
         return [target, targetProfile]
 
     # 更新用户信息

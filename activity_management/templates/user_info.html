@@ -4,20 +4,19 @@
 {% load bootstrap3 %}
 {% block content%}
         <hr>
-        <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="{% url "users:image_upload" %}" target='frameFile'>
-            <label class="changearea" for="avatarUp">
-                <span id="avatardiv" class="pic">
-                    <img width="100" height="100" class="js-img-show" id="avatarShow" src="{{ MEDIA_URL }}{{ request.user.image }}"/>
-                </span>
-                <span class="fl upload-inp-box" style="margin-left:70px;">
-                    <span class="button btn-green btn-w100" id="jsAvatarBtn">修改头像</span>
-                    <input type="file" name="image" id="avatarUp" class="js-img-up"/>
-                </span>
-            </label>
-            <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />
+        <div class="panel-body word-wrap">
+            头像：<img src="{{ user_profile.image.url }}">
+        </div>
+        {% if user.id == user_obj.id %}
+        <form method="post" action="{% url 'upload_image'%}" enctype = "multipart/form-data">
             {% csrf_token %}
+            <div class="form-group">
+                <label for="file">请上传文件</label>
+                <input type="file" id="file" name="images" class="form-control"  required/>
+            </div>
+            <button type="submit" class="btn btn-primary" >修改</button>
         </form>
-
+        {% endif %}
         <hr>
         <div class="panel-body word-wrap">
             用户：{{ user_obj.username }}

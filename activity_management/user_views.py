@@ -10,20 +10,7 @@ from .forms import ActivityForm,UploadImageForm
 
 def show_user_info(request,user_id):
     user = UserProfile.find_user_by_id(UserProfile(), user_id)
-
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST)
-
-        if form.is_valid():
-            post = form.save(commit=False)
-            messages.info(request, '修改头像创建成功！')
-
-            form = UploadImageForm(instance=user[1])
-    else:
-        form = UploadImageForm(instance=user[1])
-
-
-    return render(request, 'user_info.html', {'user_obj': user[0], 'user_profile': user[1] ,'form':form })
+    return render(request, 'user_info.html', {'user_obj': user[0], 'user_profile': user[1]} )
 
 
 @login_required

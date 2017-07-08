@@ -25,6 +25,8 @@ sched.start()
 
 
 urlpatterns = [
+
+    url(r'^upload_image$', views.upload_image, name='upload_image'),
     # home page
     url(r'^$', views.home_page, name='home'),
 

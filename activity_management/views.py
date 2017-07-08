@@ -209,4 +209,19 @@ def email_remind():
         print('send to ' + email_address + str(ans))
 
 
+@login_required
+def upload_image(request):
+    image = request.FILES.get('images')
+    if image.size > 10000 and image.size < 20480000:
+        path = default_storage.save('../media/image/'+request.user.username+'/ '+image.name,ContentFile(image.read()))
+        user_profile = UserProfile.find_user_by_id(UserProfile(),request.user.id)[1]
+        user_profile.image = 'image/'+ request.user.username+'/ '+image.name
+        user_profile.save()
+        print(True)
+        return redirect('show_user_info',request.user.id)
+
+    return redirect('show_user_info',request.user.id)
+
+
+
 
