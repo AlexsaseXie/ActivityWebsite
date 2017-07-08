@@ -52,7 +52,7 @@
                 <a href="{% url 'send_message' %}">发送消息</a>
             </li>
             <li role="presentation">
-                <a href="{% url 'unread_message' %}">未读消息({% my_simple_time user.id %})</a>
+                <a href="{% url 'unread_message' %}">未读消息({% my_unread_count user.id %})</a>
             </li>
             <li role="presentation">
                 <a href="{% url 'log_out' %}">登出(<b>{{user.username}}</b>)</a>
